@@ -21,7 +21,19 @@ CAlgorithms::CAlgorithms()
 	return;
 }
 
-int* CAlgorithms::InsertionSort(int* input, int length)
+int* CAlgorithms::InsertionSort(int* input, int length, bool asc = true)
 {
+	for (int i = 1; i < length; i++)
+	{
+		int key = input[i];
+		int j = i - 1;
+		while (j >= 0 && (asc ? input[j] > key:input[j] < key))
+		{
+			input[j + 1] = input[j];
+			j--;
+		}
+		input[j + 1] = key;
+	}
+
 	return input;
 }

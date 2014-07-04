@@ -15,7 +15,7 @@ class ALGORITHMS_API CAlgorithms {
 public:
 	CAlgorithms(void);
 	// TODO: add your methods here.
-	int * InsertionSort(int *input, int length);
+	int * InsertionSort(int *input, int length, bool asc);
 };
 
 extern ALGORITHMS_API int nAlgorithms;
