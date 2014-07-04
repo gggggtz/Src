@@ -1,0 +1,19 @@
+//import "oaidl.idl";
+//import "ocidl.idl";
+
+[
+	//A unique idenifier that distinguishes this interface from others
+	uuid(A149B4FE-AC32-4CD9-89F5-B380B5B32420),
+
+	//This is version 1.0 of this interface
+	version(1.0),
+
+	//This interface will use an implicit binding
+	//implicit_handle(handle_t hSampleRpc)
+]
+
+interface SampleRpc
+{
+	//A function that takes a zero-terminated string
+	void Output([in, string] const char* szOutput);
+};

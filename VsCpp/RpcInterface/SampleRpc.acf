@@ -1,0 +1,9 @@
+
+// File SampleRpc.acf
+[
+   // This interface will use an implicit binding handle named hExample1Binding.
+   implicit_handle(handle_t hSampleRpcBinding)
+]
+interface SampleRpc // The interface is named SampleRpc
+{
+}
