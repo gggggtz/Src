@@ -16,6 +16,11 @@ public:
 	CAlgorithms(void);
 	// TODO: add your methods here.
 	int * InsertionSort(int *input, int length, bool asc);
+
+	int * SelectionSort(int *input, int length, bool asc);
+
+private:
+	void Swap(int* input, int i, int j);
 };
 
 extern ALGORITHMS_API int nAlgorithms;

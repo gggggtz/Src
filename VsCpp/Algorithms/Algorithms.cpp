@@ -37,3 +37,30 @@ int* CAlgorithms::InsertionSort(int* input, int length, bool asc = true)
 
 	return input;
 }
+
+int* CAlgorithms::SelectionSort(int* input, int length, bool asc = true)
+{
+	for (int i = 0; i < length; i++)
+	{
+		int k = i;
+		for (int j = i; j < length; j++)
+		{
+			if (asc ? input[j] < input[k] : input[j] > input[k])
+			{
+				k = j;
+			}
+		}
+		if (k != i)
+		{
+			Swap(input, k, i);
+		}
+	}
+	return input;
+}
+
+void CAlgorithms::Swap(int* input, int i, int j)
+{
+	int temp = input[i];
+	input[i] = input[j];
+	input[j] = temp;
+}
