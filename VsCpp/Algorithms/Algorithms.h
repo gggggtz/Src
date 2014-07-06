@@ -19,8 +19,12 @@ public:
 
 	int * SelectionSort(int *input, int length, bool asc);
 
+	int FindMaxSubArray(int *input, int length, int *left, int * right);
+
 private:
 	void Swap(int* input, int i, int j);
+	int FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right);
+	int FindMaxCrossingSubArray(int *input, int low, int mid, int high, int *left, int * right);
 };
 
 extern ALGORITHMS_API int nAlgorithms;
