@@ -21,7 +21,7 @@ CAlgorithms::CAlgorithms()
 	return;
 }
 
-int* CAlgorithms::InsertionSort(int* input, int length, bool asc = true)
+void CAlgorithms::InsertionSort(int* input, int length, bool asc = true)
 {
 	for (int i = 1; i < length; i++)
 	{
@@ -34,11 +34,9 @@ int* CAlgorithms::InsertionSort(int* input, int length, bool asc = true)
 		}
 		input[j + 1] = key;
 	}
-
-	return input;
 }
 
-int* CAlgorithms::SelectionSort(int* input, int length, bool asc = true)
+void CAlgorithms::SelectionSort(int* input, int length, bool asc = true)
 {
 	for (int i = 0; i < length; i++)
 	{
@@ -55,7 +53,6 @@ int* CAlgorithms::SelectionSort(int* input, int length, bool asc = true)
 			Swap(input, k, i);
 		}
 	}
-	return input;
 }
 
 int CAlgorithms::FindMaxSubArray(int *input, int length, int *left, int * right)
@@ -176,6 +173,93 @@ int CAlgorithms::FindMaxCrossingSubArray(int *input, int low, int mid, int high,
 		}
 	}
 	return leftsum + rightsum;
+}
+
+void CAlgorithms::MergeSort(int* input, int length, bool asc)
+{
+	if (length > 1)
+	{
+		int mid = (length - 1) / 2;
+		MergeSort(input, 0, mid, asc);
+		MergeSort(input, mid + 1, length - 1, asc);
+		Merge(input, 0, mid, length - 1, asc);
+	}
+}
+
+void CAlgorithms::MergeSort(int* input, int start, int end, bool asc)
+{
+	if (start == end)
+	{
+		return;
+	}
+	else if (end-start ==1)
+	{
+		if (input[start] > input[end])
+		{
+			if (asc)
+			{
+				Swap(input, start, end);
+			}
+		}
+	}
+	else
+	{
+		int mid = (start + end) / 2;
+		MergeSort(input, start, mid, asc);
+		MergeSort(input, mid + 1, end, asc);
+		Merge(input, start, mid, end, asc);
+	}
+}
+void CAlgorithms::Merge(int* input, int start, int mid, int end, bool asc)
+{
+	int l = mid - start + 1;
+	int r = end - mid;
+	//No need to merge when either side is empty
+	if (l == 0 || r == 0)
+	{
+		return;
+	}
+	int* lInput = new int[l];
+	for (int i = start; i <= mid; i++)
+	{
+		lInput[i - start] = input[i];
+	}
+	int* rInput = new int[r];
+	for (int i = mid + 1; i <= end; i++)
+	{
+		rInput[i - mid - 1] = input[i];
+	}
+	int i = 0, j = 0;
+	for (int k = start; k <= end; k++)
+	{
+		if (i == l )
+		{
+			while (j < r)
+			{
+				input[k++] = rInput[j++];
+			}
+			break;
+		}
+		else if (j == r)
+		{
+			while (i < l)
+			{
+				input[k++] = lInput[i++];
+			}
+			break;
+		}
+		else
+		{
+			if (asc ? (lInput[i] < rInput[j]) : (lInput[i] > rInput[j]))
+			{
+				input[k] = lInput[i++];
+			}
+			else
+			{
+				input[k] = rInput[j++];
+			}
+		}
+	}
 }
 
 void CAlgorithms::Swap(int* input, int i, int j)

@@ -15,16 +15,20 @@ class ALGORITHMS_API CAlgorithms {
 public:
 	CAlgorithms(void);
 	// TODO: add your methods here.
-	int * InsertionSort(int *input, int length, bool asc);
+	void InsertionSort(int *input, int length, bool asc);
 
-	int * SelectionSort(int *input, int length, bool asc);
+	void SelectionSort(int *input, int length, bool asc);
 
 	int FindMaxSubArray(int *input, int length, int *left, int * right);
+
+	void MergeSort(int* input, int length, bool asc);
 
 private:
 	void Swap(int* input, int i, int j);
 	int FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right);
 	int FindMaxCrossingSubArray(int *input, int low, int mid, int high, int *left, int * right);
+	void MergeSort(int* input, int start, int end, bool asc);
+	void Merge(int* input, int start, int mid, int end, bool asc);
 };
 
 extern ALGORITHMS_API int nAlgorithms;
