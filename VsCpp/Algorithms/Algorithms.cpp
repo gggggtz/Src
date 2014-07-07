@@ -60,22 +60,43 @@ int* CAlgorithms::SelectionSort(int* input, int length, bool asc = true)
 
 int CAlgorithms::FindMaxSubArray(int *input, int length, int *left, int * right)
 {
-	if (length > 1)
+	*left = 0;
+	*right = 0;
+	if (length == 1)
 	{
-		*left = 0;
-		*right = length - 1;
-
+		return input[0];
+	}
+	else if (length > 1)
+	{	
 		//Divide and conquer
 		int mid = length / 2;
 
+		return FindMaxSubArrayRecursive(input, 0, length - 1, left, right);		
+	}
+	return 0;
+}
+
+int CAlgorithms::FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right)
+{
+	int sum = 0;
+	*left = low;
+	*right = high;
+	if (high == low)
+	{
+		sum = input[low];
+	}
+	else
+	{
+		int mid = (high + low) / 2;
+
 		int left1, right1, sum1;
-		sum1 = FindMaxSubArrayRecursive(input, 0, mid - 1, &left1, &right1);
+		sum1 = FindMaxSubArrayRecursive(input, low, mid, &left1, &right1);
 
 		int left2, right2, sum2;
-		sum2 = FindMaxSubArrayRecursive(input, mid, length - 1, &left2, &right2);
+		sum2 = FindMaxSubArrayRecursive(input, mid + 1, high, &left2, &right2);
 
 		int left3, right3, sum3;
-		sum3 = FindMaxCrossingSubArray(input, 0, mid, length - 1, &left3, &right3);
+		sum3 = FindMaxCrossingSubArray(input, low, mid, high, &left3, &right3);
 
 		if (sum1 > sum2)
 		{
@@ -83,13 +104,13 @@ int CAlgorithms::FindMaxSubArray(int *input, int length, int *left, int * right)
 			{
 				*left = left1;
 				*right = right1;
-				return sum1;
+				sum = sum1;
 			}
 			else
 			{
 				*left = left3;
 				*right = right3;
-				return sum3;
+				sum = sum3;
 			}
 		}
 		else
@@ -98,36 +119,34 @@ int CAlgorithms::FindMaxSubArray(int *input, int length, int *left, int * right)
 			{
 				*left = left2;
 				*right = right2;
-				return sum2;
+				sum = sum2;
 			}
 			else
 			{
 				*left = left3;
 				*right = right3;
-				return sum3;
+				sum = sum3;
 			}
 		}
 	}
-}
-
-int CAlgorithms::FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right)
-{
-	return 0;
+	return sum;
 }
 
 int CAlgorithms::FindMaxCrossingSubArray(int *input, int low, int mid, int high, int *left, int * right)
 {
-	int leftsum = MININT, rightsum = MININT, sum;
+	int leftsum = MININT, rightsum = MININT, sum = 0;
 
 	if (low == mid)
 	{
-		*left = mid;
+		*left = low;
 		leftsum = 0;
 	}
 	else
 	{
 		sum = 0;
-		for (int i = mid - 1; i >= low; i--)
+		//Needs to include input[mid] in one of the two branches
+		//Otherwise, if input[mid-1] is negtive, we will count that number
+		for (int i = mid; i >= low; i--)
 		{
 			sum += input[i];
 			if (sum > leftsum)
@@ -140,7 +159,7 @@ int CAlgorithms::FindMaxCrossingSubArray(int *input, int low, int mid, int high,
 
 	if (mid == high)
 	{
-		*right = mid;
+		*right = high;
 		rightsum = 0;
 	}
 	else
@@ -156,7 +175,7 @@ int CAlgorithms::FindMaxCrossingSubArray(int *input, int low, int mid, int high,
 			}
 		}
 	}
-	return leftsum + input[mid] + rightsum;
+	return leftsum + rightsum;
 }
 
 void CAlgorithms::Swap(int* input, int i, int j)

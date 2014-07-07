@@ -60,5 +60,16 @@ namespace UnitTest
 			Assert::AreEqual(result2[6], 2);
 		}
 
+		TEST_METHOD(MaxSubArrayTest)
+		{
+			CAlgorithms alg;
+			int input[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+			int left, right;
+			int sum = alg.FindMaxSubArray(input, 16, &left, &right);
+
+			Assert::AreEqual(sum, 43);
+			Assert::AreEqual(left, 7);
+			Assert::AreEqual(right, 10);
+		}
 	};
 }
