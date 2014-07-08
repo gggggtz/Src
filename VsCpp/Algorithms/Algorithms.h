@@ -23,7 +23,13 @@ public:
 
 	void MergeSort(int* input, int length, bool asc);
 
-	void HeapSort(int* input, int length, bool maxHeap);
+	void BuildHeap(int* input, int length, bool maxHeap);
+
+	void HeapSort(int* input, int length, bool asc);
+
+	int HeapExtract(int *heap, int length);
+
+	void HeapAlter(int *heap, int i, int val, int length);
 
 private:
 	void Swap(int* input, int i, int j);
@@ -32,15 +38,17 @@ private:
 	void MergeSort(int* input, int start, int end, bool asc);
 	void Merge(int* input, int start, int mid, int end, bool asc);
 	void HeapIfy(int* input, int i, int length, bool maxHeap);
-	inline int GetParent(int i)
+	
+	void Print(int* input, int length);
+	inline int GetParentIndex(int i)
 	{
 		return (i - 1) / 2;
 	}
-	inline int GetLeftChild(int i)
+	inline int GetLeftChildIndex(int i)
 	{
 		return 2 * i + 1;
 	}
-	inline int GetRightChild(int i)
+	inline int GetRightChildIndex(int i)
 	{
 		return 2 * i + 2;
 	}

@@ -3,6 +3,9 @@
 
 #include "stdafx.h"
 #include "Algorithms.h"
+#include <iostream>
+
+using namespace std;
 
 
 // This is an example of an exported variable
@@ -272,7 +275,126 @@ void CAlgorithms::Swap(int* input, int i, int j)
 
 void CAlgorithms::HeapIfy(int* input, int i, int length, bool maxHeap)
 {
-	int left = GetLeftChild(i);
-	int right = GetRightChild(i);
+	int left = GetLeftChildIndex(i);
+	int right = GetRightChildIndex(i);
+	//both left and right are out of range
+	if (left > length - 1)
+	{
+		return;
+	}
+	//right is out of range, left is length - 1
+	else if (right > length -1)
+	{
+		if (maxHeap ? (input[left] > input[i]) : (input[left] < input[i]))
+		{
+			Swap(input, left, i);
+		}
+	}
+	//both left and right are in the heap
+	else
+	{
+		int key = i;
+		if (maxHeap ? (input[left] > input[i]) : input[left] < input[i])
+		{
+			key = left;
+			if (maxHeap ? (input[right] > input[left]) : (input[right] < input[left]))
+			{
+				key = right;
+			}
 
+		}
+		else if (maxHeap ? (input[right] > input[i]) : input[right] < input[i])
+		{
+			key = right;
+		}
+		if (key != i)
+		{
+			Swap(input, key, i);
+			HeapIfy(input, key, length, maxHeap);
+		}
+	}
+}
+
+void CAlgorithms::BuildHeap(int* input, int length, bool maxHeap)
+{
+	if (length > 1)
+	{
+		//all the elements after lastParent are leafs
+		int lastParent = GetParentIndex(length - 1);
+		//after we adjust all the elements before lastParent, the heap is built
+		for (int i = lastParent; i >= 0; i--)
+		{
+			HeapIfy(input, i, length, maxHeap);
+		}
+	}
+}
+
+void CAlgorithms::HeapSort(int* input, int length, bool asc)
+{
+	if (length > 1)
+	{
+		BuildHeap(input, length, asc);
+		int i = length - 1;
+		while (i > 0)
+		{
+			Swap(input, i, 0);
+			HeapIfy(input, 0, i, asc);
+			i--;
+		}
+	}
+}
+
+void CAlgorithms::Print(int* input, int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		cout << input[i] << " - ";
+	}
+	cout << endl;
+}
+
+int CAlgorithms::HeapExtract(int *heap, int length)
+{
+	if (length > 1)
+	{
+		bool maxHeap = heap[0] > heap[1];
+		int val = heap[0];
+		Swap(heap, 0, length - 1);
+		HeapIfy(heap, 0, length - 1, maxHeap);
+		return val;
+	}
+	else if (length == 1)
+	{
+		return heap[0];
+	}
+	return MININT;
+}
+
+void CAlgorithms::HeapAlter(int *heap, int i, int val, int length)
+{
+	if (length > i)
+	{
+		int oldVal = heap[i];
+		heap[i] = val;
+		if (length > 1)
+		{
+			bool maxHeap = heap[0] > heap[1];
+			if (maxHeap ? oldVal > val:oldVal < val)
+			{
+				HeapIfy(heap, i, length, maxHeap);
+			}
+			else
+			{
+				while (i > 0)
+				{
+					int p = GetParentIndex(i);
+					if (maxHeap ? heap[p] < heap[i] : heap[p] > heap[i])
+					{
+						Swap(heap, i, p);
+						i = p;
+					}
+				}
+			}
+		}
+	}
 }
