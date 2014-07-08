@@ -210,6 +210,7 @@ void CAlgorithms::MergeSort(int* input, int start, int end, bool asc)
 		Merge(input, start, mid, end, asc);
 	}
 }
+
 void CAlgorithms::Merge(int* input, int start, int mid, int end, bool asc)
 {
 	int l = mid - start + 1;
@@ -267,4 +268,11 @@ void CAlgorithms::Swap(int* input, int i, int j)
 	int temp = input[i];
 	input[i] = input[j];
 	input[j] = temp;
+}
+
+void CAlgorithms::HeapIfy(int* input, int i, int length, bool maxHeap)
+{
+	int left = GetLeftChild(i);
+	int right = GetRightChild(i);
+
 }

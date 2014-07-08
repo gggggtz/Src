@@ -23,12 +23,27 @@ public:
 
 	void MergeSort(int* input, int length, bool asc);
 
+	void HeapSort(int* input, int length, bool maxHeap);
+
 private:
 	void Swap(int* input, int i, int j);
 	int FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right);
 	int FindMaxCrossingSubArray(int *input, int low, int mid, int high, int *left, int * right);
 	void MergeSort(int* input, int start, int end, bool asc);
 	void Merge(int* input, int start, int mid, int end, bool asc);
+	void HeapIfy(int* input, int i, int length, bool maxHeap);
+	inline int GetParent(int i)
+	{
+		return (i - 1) / 2;
+	}
+	inline int GetLeftChild(int i)
+	{
+		return 2 * i + 1;
+	}
+	inline int GetRightChild(int i)
+	{
+		return 2 * i + 2;
+	}
 };
 
 extern ALGORITHMS_API int nAlgorithms;
