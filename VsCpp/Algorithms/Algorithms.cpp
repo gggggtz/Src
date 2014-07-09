@@ -370,7 +370,7 @@ int CAlgorithms::HeapExtract(int *heap, int length)
 	return MININT;
 }
 
-void CAlgorithms::HeapAlter(int *heap, int i, int val, int length)
+void CAlgorithms::HeapAlter(int *heap, int i, int val, int length, bool maxHeap)
 {
 	if (length > i)
 	{
@@ -378,7 +378,6 @@ void CAlgorithms::HeapAlter(int *heap, int i, int val, int length)
 		heap[i] = val;
 		if (length > 1)
 		{
-			bool maxHeap = heap[0] > heap[1];
 			if (maxHeap ? oldVal > val:oldVal < val)
 			{
 				HeapIfy(heap, i, length, maxHeap);
@@ -397,4 +396,16 @@ void CAlgorithms::HeapAlter(int *heap, int i, int val, int length)
 			}
 		}
 	}
+}
+
+int* CAlgorithms::HeapInsert(int *heap, int length, int val, bool maxHeap)
+{
+	int* newHeap = new int[length + 1];
+	for (int i = 0; i < length; i++)
+	{
+		newHeap[i] = heap[i];
+	}
+	newHeap[length] = MININT;
+	HeapAlter(newHeap, length, val, length + 1,maxHeap);
+	return newHeap;
 }

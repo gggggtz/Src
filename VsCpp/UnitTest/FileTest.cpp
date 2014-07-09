@@ -10,11 +10,11 @@ namespace UnitTest
 	{
 	public:
 		
-		TEST_METHOD(ReadTest)
+		/*TEST_METHOD(ReadTest)
 		{
 			FileOperations fo;
 			fo.PrintFile("ReadMe.txt");
-		}
+		}*/
 
 	};
 }

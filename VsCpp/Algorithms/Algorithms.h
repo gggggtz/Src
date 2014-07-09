@@ -29,7 +29,9 @@ public:
 
 	int HeapExtract(int *heap, int length);
 
-	void HeapAlter(int *heap, int i, int val, int length);
+	void HeapAlter(int *heap, int i, int val, int length, bool maxHeap);
+
+	int* CAlgorithms::HeapInsert(int *heap, int length, int val, bool maxHeap);
 
 private:
 	void Swap(int* input, int i, int j);

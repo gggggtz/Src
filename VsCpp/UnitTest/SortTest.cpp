@@ -150,6 +150,8 @@ namespace UnitTest
 			int input22[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
 			alg.BuildHeap(input22, 10, true);
 
+			int p = input22[3];
+
 			//parents of input22[3]
 			int p1 = input22[1];
 			int p2 = input22[0];
@@ -158,17 +160,32 @@ namespace UnitTest
 			int c1 = input22[7];
 			int c2 = input22[8];
 
-			alg.HeapAlter(input22, 3, 11, 10);
+			alg.HeapAlter(input22, 3, 11, 10, true);
 
 			Assert::AreEqual(input22[0], 11);
 			Assert::AreEqual(input22[1], p2);
 			Assert::AreEqual(input22[3], p1);
 
-			alg.HeapAlter(input22, 3, -1, 10);
+			alg.HeapAlter(input22, 3, -1, 10, true);
 
 			Assert::AreEqual(input22[3], c1 > c2 ? c1 : c2);
 			Assert::AreEqual(input22[7], c1 < c2 ? c1 : -1);
 			Assert::AreEqual(input22[8], c2 < c1 ? c2 : -1);
+
+			int* result = alg.HeapInsert(input22, 10, p, true);
+			alg.HeapSort(result, 11, true);
+
+			Assert::AreEqual(result[0], -1);
+			Assert::AreEqual(result[1], 0);
+			Assert::AreEqual(result[2], 1);
+			Assert::AreEqual(result[3], 2);
+			Assert::AreEqual(result[4], 3);
+			Assert::AreEqual(result[5], 4);
+			Assert::AreEqual(result[6], 5);
+			Assert::AreEqual(result[7], 6);
+			Assert::AreEqual(result[8], 7);
+			Assert::AreEqual(result[9], 8);
+			Assert::AreEqual(result[10], 11);
 		}
 	};
 }
