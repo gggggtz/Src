@@ -392,6 +392,10 @@ void CAlgorithms::HeapAlter(int *heap, int i, int val, int length, bool maxHeap)
 						Swap(heap, i, p);
 						i = p;
 					}
+					else
+					{
+						break;
+					}
 				}
 			}
 		}

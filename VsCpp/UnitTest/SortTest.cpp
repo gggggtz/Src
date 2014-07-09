@@ -176,15 +176,15 @@ namespace UnitTest
 			alg.HeapSort(result, 11, true);
 
 			Assert::AreEqual(result[0], -1);
-			Assert::AreEqual(result[1], 0);
-			Assert::AreEqual(result[2], 1);
-			Assert::AreEqual(result[3], 2);
-			Assert::AreEqual(result[4], 3);
-			Assert::AreEqual(result[5], 4);
-			Assert::AreEqual(result[6], 5);
-			Assert::AreEqual(result[7], 6);
-			Assert::AreEqual(result[8], 7);
-			Assert::AreEqual(result[9], 8);
+			Assert::AreEqual(result[1], 1);
+			Assert::AreEqual(result[2], 2);
+			Assert::AreEqual(result[3], 3);
+			Assert::AreEqual(result[4], 4);
+			Assert::AreEqual(result[5], 5);
+			Assert::AreEqual(result[6], 6);
+			Assert::AreEqual(result[7], 7);
+			Assert::AreEqual(result[8], 8);
+			Assert::AreEqual(result[9], 10);
 			Assert::AreEqual(result[10], 11);
 		}
 	};
