@@ -33,6 +33,8 @@ public:
 
 	int* CAlgorithms::HeapInsert(int *heap, int length, int val, bool maxHeap);
 
+	void QuickSort(int* input, int length, bool asc);
+
 private:
 	void Swap(int* input, int i, int j);
 	int FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right);
@@ -40,7 +42,9 @@ private:
 	void MergeSort(int* input, int start, int end, bool asc);
 	void Merge(int* input, int start, int mid, int end, bool asc);
 	void HeapIfy(int* input, int i, int length, bool maxHeap);
-	
+	int Partion(int* input, int p, int r, bool asc);
+	void QuickSort(int* input, int p, int r, bool asc);
+
 	void Print(int* input, int length);
 	inline int GetParentIndex(int i)
 	{

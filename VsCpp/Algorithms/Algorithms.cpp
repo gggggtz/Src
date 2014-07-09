@@ -413,3 +413,42 @@ int* CAlgorithms::HeapInsert(int *heap, int length, int val, bool maxHeap)
 	HeapAlter(newHeap, length, val, length + 1,maxHeap);
 	return newHeap;
 }
+
+int CAlgorithms::Partion(int* input, int p, int r, bool asc)
+{
+	//let input[r] be the pivot
+	int key = input[r];
+	//divide the array into 3 parts for asc
+	//p ... i -- <= key
+	//i+1 ... j -- > key
+	//r -- = key
+	int i = p - 1;
+	for (int j = p; j < r; j++)
+	{
+		if (asc ? input[j] <= key : input[j] >= key)
+		{
+			i++;
+			if (i != j)
+			{
+				Swap(input, i, j);
+			}
+		}
+	}
+	Swap(input, i + 1, r);
+	return i + 1;
+}
+
+void CAlgorithms::QuickSort(int* input, int p, int r, bool asc)
+{
+	if (p < r)
+	{
+		int q = Partion(input, p, r, asc);
+		QuickSort(input, p, q - 1, asc);
+		QuickSort(input, q + 1, r, asc);
+	}
+}
+
+void CAlgorithms::QuickSort(int* input, int length, bool asc)
+{
+	QuickSort(input, 0, length - 1,asc);
+}
