@@ -33,6 +33,7 @@ namespace UnitTest
 			Assert::AreEqual(input2[4], 4);
 			Assert::AreEqual(input2[5], 3);
 			Assert::AreEqual(input2[6], 2);
+
 		}
 
 		TEST_METHOD(SelectionSortTest)
@@ -58,6 +59,7 @@ namespace UnitTest
 			Assert::AreEqual(input2[4], 4);
 			Assert::AreEqual(input2[5], 3);
 			Assert::AreEqual(input2[6], 2);
+
 		}
 
 		TEST_METHOD(MaxSubArrayTest)
@@ -70,6 +72,7 @@ namespace UnitTest
 			Assert::AreEqual(sum, 43);
 			Assert::AreEqual(left, 7);
 			Assert::AreEqual(right, 10);
+
 		}
 
 		TEST_METHOD(MergeSortTest)
@@ -101,6 +104,7 @@ namespace UnitTest
 			Assert::AreEqual(input2[7], 3);
 			Assert::AreEqual(input2[8], 2);
 			Assert::AreEqual(input2[9], 1);
+
 		}
 
 		TEST_METHOD(HeapSortTest)
@@ -186,6 +190,7 @@ namespace UnitTest
 			Assert::AreEqual(result[8], 8);
 			Assert::AreEqual(result[9], 10);
 			Assert::AreEqual(result[10], 11);
+
 		}
 
 		TEST_METHOD(QuickSortTest)
@@ -217,6 +222,39 @@ namespace UnitTest
 			Assert::AreEqual(input2[7], 3);
 			Assert::AreEqual(input2[8], 2);
 			Assert::AreEqual(input2[9], 1);
+
+		}
+
+		TEST_METHOD(CountingSortTest)
+		{
+			CAlgorithms alg;
+
+			int input1[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			int* result = alg.CountingSort(input1, 10, 10, true);
+			Assert::AreEqual(result[0], 1);
+			Assert::AreEqual(result[1], 2);
+			Assert::AreEqual(result[2], 3);
+			Assert::AreEqual(result[3], 4);
+			Assert::AreEqual(result[4], 5);
+			Assert::AreEqual(result[5], 6);
+			Assert::AreEqual(result[6], 7);
+			Assert::AreEqual(result[7], 8);
+			Assert::AreEqual(result[8], 9);
+			Assert::AreEqual(result[9], 10);
+
+			int input2[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			result = alg.CountingSort(input2, 10,10, false);
+			Assert::AreEqual(result[0], 10);
+			Assert::AreEqual(result[1], 9);
+			Assert::AreEqual(result[2], 8);
+			Assert::AreEqual(result[3], 7);
+			Assert::AreEqual(result[4], 6);
+			Assert::AreEqual(result[5], 5);
+			Assert::AreEqual(result[6], 4);
+			Assert::AreEqual(result[7], 3);
+			Assert::AreEqual(result[8], 2);
+			Assert::AreEqual(result[9], 1);
+
 		}
 	};
 }

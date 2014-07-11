@@ -452,3 +452,35 @@ void CAlgorithms::QuickSort(int* input, int length, bool asc)
 {
 	QuickSort(input, 0, length - 1,asc);
 }
+
+int* CAlgorithms::CountingSort(int* input, int length, int max, bool asc)
+{
+	int* output = new int[length];
+	int k = max + 1;
+	int* temp = new int[k];
+
+	for (int i = 0; i < k; i++)
+	{
+		temp[i] = 0;
+	}
+	//After this, value of temp[i] is the occurance of i in input
+	for (int i = 0; i < length; i++)
+	{
+		temp[input[i]]++;
+	}
+	//After this, value of temp[i] is the number of the elements in input that are samller than or equal to i
+	for (int i = 0; i < k - 1; i++)
+	{
+		temp[i + 1] += temp[i];
+	}
+	//if all the elements are distinct, input[i] will be at the position of temp[input[i]]
+	//if they are not distinct, then we decrease the value of temp[input[i]], so the next element with the same value will be before the current one
+	for (int i = length - 1; i >= 0; i--)
+	{
+		int targetIndex = asc ? temp[input[i]] - 1 : length - temp[input[i]];
+		output[targetIndex] = input[i];
+		temp[input[i]]--;
+	}
+
+	return output;
+}

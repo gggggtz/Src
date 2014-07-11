@@ -35,6 +35,8 @@ public:
 
 	void QuickSort(int* input, int length, bool asc);
 
+	int* CountingSort(int* input, int length, int max, bool asc);
+
 private:
 	void Swap(int* input, int i, int j);
 	int FindMaxSubArrayRecursive(int *input, int low, int high, int *left, int * right);
