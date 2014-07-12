@@ -33,9 +33,11 @@ public:
 
 	int* CAlgorithms::HeapInsert(int *heap, int length, int val, bool maxHeap);
 
-	void QuickSort(int* input, int length, bool asc);
+	void QuickSort(int* input, int length, bool asc, bool randomPivot);
 
 	int* CountingSort(int* input, int length, int max, bool asc);
+
+	int GetIthElement(int* input, int length, int i, bool asc);
 
 private:
 	void Swap(int* input, int i, int j);
@@ -45,7 +47,9 @@ private:
 	void Merge(int* input, int start, int mid, int end, bool asc);
 	void HeapIfy(int* input, int i, int length, bool maxHeap);
 	int Partion(int* input, int p, int r, bool asc);
-	void QuickSort(int* input, int p, int r, bool asc);
+	int Partion(int* input, int p, int r, bool asc, bool randomPivot);
+	void QuickSort(int* input, int p, int r, bool asc, bool randomPivot);
+	int GetIthElement(int* input, int p, int r, int i, bool asc);
 
 	void Print(int* input, int length);
 	inline int GetParentIndex(int i)

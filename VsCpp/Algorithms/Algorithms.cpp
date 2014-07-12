@@ -438,19 +438,34 @@ int CAlgorithms::Partion(int* input, int p, int r, bool asc)
 	return i + 1;
 }
 
-void CAlgorithms::QuickSort(int* input, int p, int r, bool asc)
+int CAlgorithms::Partion(int* input, int p, int r, bool asc, bool randomPivot)
+{
+	int k = r;
+	if (randomPivot)
+	{
+		int random = rand();
+		k = (p + (double)random / (RAND_MAX + 1) * (r - p));
+		if (k != r)
+		{
+			Swap(input, k, r);
+		}
+	}
+	return Partion(input, p, r, asc);
+}
+
+void CAlgorithms::QuickSort(int* input, int p, int r, bool asc, bool randomPivot)
 {
 	if (p < r)
 	{
-		int q = Partion(input, p, r, asc);
-		QuickSort(input, p, q - 1, asc);
-		QuickSort(input, q + 1, r, asc);
+		int q = Partion(input, p, r, asc, randomPivot);
+		QuickSort(input, p, q - 1, asc, randomPivot);
+		QuickSort(input, q + 1, r, asc, randomPivot);
 	}
 }
 
-void CAlgorithms::QuickSort(int* input, int length, bool asc)
+void CAlgorithms::QuickSort(int* input, int length, bool asc, bool randomPivot)
 {
-	QuickSort(input, 0, length - 1,asc);
+	QuickSort(input, 0, length - 1, asc, randomPivot);
 }
 
 int* CAlgorithms::CountingSort(int* input, int length, int max, bool asc)
@@ -483,4 +498,32 @@ int* CAlgorithms::CountingSort(int* input, int length, int max, bool asc)
 	}
 
 	return output;
+}
+
+int CAlgorithms::GetIthElement(int* input, int length, int i, bool asc)
+{
+	return GetIthElement(input, 0, length - 1, i, asc);
+}
+
+int CAlgorithms::GetIthElement(int* input, int p, int r, int i, bool asc)
+{
+	if (p == r)
+	{
+		return input[p];
+	}
+	int q = Partion(input, p, r, asc, true);
+	//needs to consider the elements from p to q;
+	int k = q - p;
+	if (i == k)
+	{
+		return input[q];
+	}
+	else if (i > k)
+	{
+		return GetIthElement(input, q + 1, r, i - k - 1, asc);
+	}
+	else
+	{
+		return GetIthElement(input, p, q - 1, i, asc);
+	}
 }

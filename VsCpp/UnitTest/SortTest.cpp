@@ -198,7 +198,7 @@ namespace UnitTest
 			CAlgorithms alg;
 
 			int input1[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
-			alg.QuickSort(input1, 10, true);
+			alg.QuickSort(input1, 10, true,false);
 			Assert::AreEqual(input1[0], 1);
 			Assert::AreEqual(input1[1], 2);
 			Assert::AreEqual(input1[2], 3);
@@ -211,7 +211,7 @@ namespace UnitTest
 			Assert::AreEqual(input1[9], 10);
 
 			int input2[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
-			alg.QuickSort(input2, 10, false);
+			alg.QuickSort(input2, 10, false,false);
 			Assert::AreEqual(input2[0], 10);
 			Assert::AreEqual(input2[1], 9);
 			Assert::AreEqual(input2[2], 8);
@@ -222,6 +222,32 @@ namespace UnitTest
 			Assert::AreEqual(input2[7], 3);
 			Assert::AreEqual(input2[8], 2);
 			Assert::AreEqual(input2[9], 1);
+
+			int input11[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			alg.QuickSort(input11, 10, true, true);
+			Assert::AreEqual(input11[0], 1);
+			Assert::AreEqual(input11[1], 2);
+			Assert::AreEqual(input11[2], 3);
+			Assert::AreEqual(input11[3], 4);
+			Assert::AreEqual(input11[4], 5);
+			Assert::AreEqual(input11[5], 6);
+			Assert::AreEqual(input11[6], 7);
+			Assert::AreEqual(input11[7], 8);
+			Assert::AreEqual(input11[8], 9);
+			Assert::AreEqual(input11[9], 10);
+
+			int input22[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			alg.QuickSort(input22, 10, false, true);
+			Assert::AreEqual(input22[0], 10);
+			Assert::AreEqual(input22[1], 9);
+			Assert::AreEqual(input22[2], 8);
+			Assert::AreEqual(input22[3], 7);
+			Assert::AreEqual(input22[4], 6);
+			Assert::AreEqual(input22[5], 5);
+			Assert::AreEqual(input22[6], 4);
+			Assert::AreEqual(input22[7], 3);
+			Assert::AreEqual(input22[8], 2);
+			Assert::AreEqual(input22[9], 1);
 
 		}
 
@@ -254,6 +280,36 @@ namespace UnitTest
 			Assert::AreEqual(result[7], 3);
 			Assert::AreEqual(result[8], 2);
 			Assert::AreEqual(result[9], 1);
+
+		}
+
+		TEST_METHOD(IthElementTest)
+		{
+			CAlgorithms alg;
+
+			int input1[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 0, true), 1);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 1, true), 2);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 2, true), 3);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 3, true), 4);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 4, true), 5);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 5, true), 6);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 6, true), 7);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 7, true), 8);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 8, true), 9);
+			Assert::AreEqual(alg.GetIthElement(input1, 10, 9, true), 10);
+
+			int input2[] = { 8, 4, 2, 6, 9, 3, 7, 1, 10, 5 };
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 0, false), 10);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 1, false), 9);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 2, false), 8);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 3, false), 7);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 4, false), 6);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 5, false), 5);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 6, false), 4);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 7, false), 3);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 8, false), 2);
+			Assert::AreEqual(alg.GetIthElement(input2, 10, 9, false), 1);
 
 		}
 	};
