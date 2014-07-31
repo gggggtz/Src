@@ -7,8 +7,9 @@ using System.Text;
 namespace Common.Wpf.ViewModel
 {
     [ComVisible(true)]
+    [Serializable]
     public partial class WebPageViewModel : TitledViewModel
-    {		
+    {
         /// <summary>
         /// Gets / sets the Body value
         /// </summary>
@@ -29,5 +30,12 @@ namespace Common.Wpf.ViewModel
         /// </summary>
         public string Source { get; set; }
 
+        public void CallJavaScript(string functionName, params object[] args)
+        {
+            if (View != null)
+            {
+                View.CallJavaScript(functionName, args);
+            }
+        }
     }
 }

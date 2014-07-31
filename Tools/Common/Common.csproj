@@ -97,8 +97,6 @@
     <Compile Include="Extensions\ReflectionExtension.cs" />
     <Compile Include="IPersistable.cs" />
     <Compile Include="Net\UdpPacket.cs" />
-    <Compile Include="ValidationRule\PasswordRule.cs" />
-    <Compile Include="ValidationRule\LetterAndNumberRule.cs" />
     <Compile Include="Notification\EnumNotificationMessage.cs" />
     <Compile Include="Notification\IExecuteWithObject.cs" />
     <Compile Include="Notification\IMessenger.cs" />

@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Common.Wpf.ViewModel
 {
-    [ComVisible(true)]
     [Serializable]
     public partial class TitledViewModel : ViewModelBase
     {
@@ -24,5 +23,4 @@ namespace Common.Wpf.ViewModel
             set { ChangeAndNotify<string>(ref title, value, () => Title); }
         }
     }
-
 }

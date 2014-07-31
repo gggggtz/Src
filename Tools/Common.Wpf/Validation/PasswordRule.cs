@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 
-namespace Common
+namespace Common.Wpf.Validation
 {
     public class PasswordRule:ValidationRule
     {

@@ -97,6 +97,8 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Validation\LetterAndNumberRule.cs" />
+    <Compile Include="Validation\PasswordRule.cs" />
     <Compile Include="ViewModel\SecureCommandViewModel.cs" />
     <Compile Include="ViewModel\ImageViewModel.cs" />
     <Compile Include="ViewModel\SecureCommand.cs" />

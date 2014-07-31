@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Common.Notification;
+using Common.Wpf.ViewModel;
 
 namespace Common.Wpf
 {
@@ -22,8 +23,29 @@ namespace Common.Wpf
 
 		public MessageSinkUserControl()
 		{
+            DataContextChanged += MessageSinkUserControl_DataContextChanged;
 			Messenger.Default.Register<EnumNotificationMessage<object, ActionType>>(this, MessageReceived);
 		}
+
+        void MessageSinkUserControl_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            if (e.OldValue != null)
+            {
+                ViewModelBase vm = e.OldValue as ViewModelBase;
+                if (vm != null)
+                {
+                    vm.View = null;
+                }
+            }
+            if (e.NewValue != null)
+            {
+                ViewModelBase vm = e.NewValue as ViewModelBase;
+                if (vm != null)
+                {
+                    //vm.View = this;
+                }
+            }
+        }
 
 		private void MessageReceived(EnumNotificationMessage<object, ActionType> message)
 		{

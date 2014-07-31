@@ -54,7 +54,6 @@ namespace Common.Wpf.ViewModel
 				}
 			}
 		}
-
         
         #region IDisposable Implemenation 
 
@@ -127,14 +126,6 @@ namespace Common.Wpf.ViewModel
 
         #endregion
 
-        public void CallJavaScript(string functionName, params object[] args)
-        {
-            if (View != null)
-            {
-                View.CallJavaScript(functionName, args);
-            }
-        }
-
         public void DispatcherInvoker(Action act, bool async = false)
         {
             //var disp = System.Windows.Threading.Dispatcher.CurrentDispatcher;
@@ -158,7 +149,6 @@ namespace Common.Wpf.ViewModel
 
         public ViewModelBase()
         {
-            
         }
 
         public virtual void Initialize()
@@ -186,5 +176,12 @@ namespace Common.Wpf.ViewModel
         }
 
         public IView View { get; set; }
+    }
+
+    [ComVisible(true)]
+    [Serializable]
+    public class ComVisibleViewModelBase : ViewModelBase
+    {
+
     }
 }

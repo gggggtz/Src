@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Common.Wpf.ViewModel
 {
-    [ComVisible(true)]
     [Serializable]
     public class SecureCommandViewModel : TitledViewModel
     {        
