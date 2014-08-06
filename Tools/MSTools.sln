@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resource", "Resource\Resource.csproj", "{14A9DF49-B40D-4140-9E44-683CD5E4D113}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{CF0A5183-0CDE-4E46-986F-04E9C022852C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,14 @@ Global
 		{14A9DF49-B40D-4140-9E44-683CD5E4D113}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14A9DF49-B40D-4140-9E44-683CD5E4D113}.Release|x64.ActiveCfg = Release|Any CPU
 		{14A9DF49-B40D-4140-9E44-683CD5E4D113}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF0A5183-0CDE-4E46-986F-04E9C022852C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
