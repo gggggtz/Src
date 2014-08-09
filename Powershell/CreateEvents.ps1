@@ -1,0 +1,10 @@
+﻿$charlieAppLog = Get-EventLog -LogName Application -Source Charlie -Newest 1 -ErrorAction SilentlyContinue
+if(!$charlieAppLog)
+{   
+    New-EventLog -LogName Application -Source Charlie
+}
+
+for($i = 1; $i -le 65535 ; $i++)
+{
+	Write-EventLog -LogName Application -Source Charlie -EntryType Information -Message "This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message This is a very very long Test Message $i" -EventId $i -Category 1
+}
