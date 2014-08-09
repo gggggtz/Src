@@ -54,7 +54,6 @@ if($Backup)
     $TaskRegInfo = $BackupTaskDef.RegistrationInfo
     #settings
     $TaskSettings =$BackupTaskDef.Settings
-    $TaskSettings.Enable=$true
     $TaskSettings.StartWhenAvailable = $true
     $TaskSettings.Hidden = $false
     #trigger
@@ -66,8 +65,8 @@ if($Backup)
     $Trigger.Enabled=$true
     #action
     $Action = $BackupTaskDef.Actions.Create(0)
-    $Action.Path = $BackupPSFile
-    $Action.Arguments = " -src " + $BackupSrc + " -dest " + $BackupDest
+    $Action.Path = "powershell.exe"
+    $Action.Arguments = $BackupPSFile + " -src " + $BackupSrc + " -dest " + $BackupDest
     $EventLogFolder.RegisterTaskDefinition( 'Back up Event Logs', $BackupTaskDef, 6, $BackupUser , $BackupPwd , 1)
 }
 

@@ -5,4 +5,4 @@
     [String] $dest
 )
 
-Move-Item -Path $src -Destination $dest -Recurse $true
+Move-Item -Path $src -Destination $dest -Force
