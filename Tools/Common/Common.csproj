@@ -7,8 +7,8 @@
     <ProjectGuid>{4F1E6D13-715A-4655-9CF7-3F180915C0E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YoYoStudio.Common</RootNamespace>
-    <AssemblyName>YoYoStudio.Common</AssemblyName>
+    <RootNamespace>Common</RootNamespace>
+    <AssemblyName>Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -91,6 +91,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="AssemblyHelper.cs" />
     <Compile Include="Encryption\StringEncryption.cs" />
     <Compile Include="ExpressionHelper.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
@@ -108,10 +109,6 @@
     <Compile Include="ObjectHistory\HistoryableObject.cs" />
     <Compile Include="ObjectHistory\HistoryableProperty.cs" />
     <Compile Include="ObjectHistory\HistoryContext.cs" />
-    <Compile Include="ORM\Attributes.cs" />
-    <Compile Include="ORM\DataInfo.cs" />
-    <Compile Include="ORM\IEntityAccesser.cs" />
-    <Compile Include="ORM\IORMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\PropertyChangedEventHandlerExtension.cs" />
     <Compile Include="SafeDictionary.cs" />

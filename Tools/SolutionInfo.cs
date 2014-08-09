@@ -14,10 +14,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyCompany("YoYo Studio")]
-[assembly: AssemblyCopyright("Copyright © YoYo Studio 2013")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyProduct("9258 Suite")]
+[assembly: AssemblyProduct("")]
 
 // Version information for an assembly consists of the following four values:
 //

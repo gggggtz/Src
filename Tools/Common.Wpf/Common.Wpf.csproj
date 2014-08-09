@@ -7,8 +7,8 @@
     <ProjectGuid>{45E2C53A-0A53-47C8-BB33-8FAD89D86ACC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YoYoStudio.Common.Wpf</RootNamespace>
-    <AssemblyName>YoYoStudio.Common.Wpf</AssemblyName>
+    <RootNamespace>Common.Wpf</RootNamespace>
+    <AssemblyName>Common.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
