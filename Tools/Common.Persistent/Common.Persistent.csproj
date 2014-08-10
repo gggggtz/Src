@@ -46,6 +46,7 @@
     <Compile Include="ORMapping\IORMapper.cs" />
     <Compile Include="ORMapping\ORMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlORMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

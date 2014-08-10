@@ -96,6 +96,7 @@
     <Compile Include="ExpressionHelper.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="IPersistable.cs" />
     <Compile Include="Net\UdpPacket.cs" />
     <Compile Include="Notification\EnumNotificationMessage.cs" />
