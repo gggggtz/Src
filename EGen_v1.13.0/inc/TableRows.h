@@ -142,7 +142,7 @@ typedef struct CUSTOMER_ROW
     char                    C_F_NAME[ cF_NAME_len+1 ];
     char                    C_M_NAME[ cM_NAME_len+1 ];
     char                    C_GNDR;
-    char                    C_TIER;
+    char					C_TIER;
     CDateTime               C_DOB;
     TIdent                  C_AD_ID;
     char                    C_CTRY_1[ cCTRY_len+1 ];

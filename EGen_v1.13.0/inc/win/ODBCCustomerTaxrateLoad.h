@@ -55,9 +55,12 @@ public:
     {
         //Binding function we have to implement.
         int i = 0;
-        if (   bcp_bind(m_hdbc, (BYTE *) &m_row.CX_C_ID, 0, SQL_VARLEN_DATA, NULL, 0, IDENT_BIND, ++i) != SUCCEED
+        /*if (   bcp_bind(m_hdbc, (BYTE *) &m_row.CX_C_ID, 0, SQL_VARLEN_DATA, NULL, 0, IDENT_BIND, ++i) != SUCCEED
             || bcp_bind(m_hdbc, (BYTE *) &m_row.CX_TX_ID, 0, SQL_VARLEN_DATA, (BYTE *)"", 1, SQLCHARACTER, ++i) != SUCCEED
-            )
+            )*/
+		if (bcp_bind(m_hdbc, (BYTE *)&m_row.CX_TX_ID, 0, SQL_VARLEN_DATA, (BYTE *)"", 1, SQLCHARACTER, ++i) != SUCCEED
+			|| bcp_bind(m_hdbc, (BYTE *)&m_row.CX_C_ID, 0, SQL_VARLEN_DATA, NULL, 0, IDENT_BIND, ++i) != SUCCEED
+			)
             ThrowError(CODBCERR::eBcpBind);
 
         if ( bcp_control(m_hdbc, BCPHINTS, "ORDER (CX_C_ID)" ) != SUCCEED )

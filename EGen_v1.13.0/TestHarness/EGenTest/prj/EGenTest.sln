@@ -1,99 +1,27 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTest", "EGenTest.vcproj", "{414D3054-7812-46A2-BB84-F0C6119C30D1}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8} = {D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}
-		{D95D2369-5385-4EA4-8270-2406741EE27A} = {D95D2369-5385-4EA4-8270-2406741EE27A}
-		{003219A5-955B-4DB1-9CA4-B78B121EA13D} = {003219A5-955B-4DB1-9CA4-B78B121EA13D}
-		{C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7} = {C83AAAB7-C52E-4457-AA88-2C5AB3A8A7B7}
-		{36F8142B-6234-497F-97DA-D1218F5270C6} = {36F8142B-6234-497F-97DA-D1218F5270C6}
-		{FE6E4805-E3C0-47B6-B7FB-D1DCD1FAB24E} = {FE6E4805-E3C0-47B6-B7FB-D1DCD1FAB24E}
-		{20B116BE-5C12-40FA-A771-B395F626BE55} = {20B116BE-5C12-40FA-A771-B395F626BE55}
-		{913034C3-2211-4833-AD3D-FFA8A74FACF1} = {913034C3-2211-4833-AD3D-FFA8A74FACF1}
-		{5A107CCC-9195-4C93-AD04-E30B6C88D356} = {5A107CCC-9195-4C93-AD04-E30B6C88D356}
-		{69127AA7-CAC6-442D-981D-72DBE717A93A} = {69127AA7-CAC6-442D-981D-72DBE717A93A}
-		{FBCD8B8A-F6C4-4581-ABBA-531801758797} = {FBCD8B8A-F6C4-4581-ABBA-531801758797}
-		{35EF6F31-C53E-4DA3-B333-4D214725D59F} = {35EF6F31-C53E-4DA3-B333-4D214725D59F}
-		{0C900BCF-C655-4E18-8CE1-06EA1E5087B8} = {0C900BCF-C655-4E18-8CE1-06EA1E5087B8}
-		{BDC9048F-2EC3-42A7-BFEB-100F35B5FDA0} = {BDC9048F-2EC3-42A7-BFEB-100F35B5FDA0}
-		{F1468808-C90B-485A-ADF6-E8B35DE2F896} = {F1468808-C90B-485A-ADF6-E8B35DE2F896}
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTest", "EGenTest.vcxproj", "{414D3054-7812-46A2-BB84-F0C6119C30D1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenBaseLoader", "RefEGenBaseLoader.vcproj", "{9B88CFD6-B58C-476A-987F-58F22E5C3F23}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenBaseLoader", "RefEGenBaseLoader.vcxproj", "{9B88CFD6-B58C-476A-987F-58F22E5C3F23}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverCELib", "RefEGenDriverCELib.vcproj", "{20B116BE-5C12-40FA-A771-B395F626BE55}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{F1468808-C90B-485A-ADF6-E8B35DE2F896} = {F1468808-C90B-485A-ADF6-E8B35DE2F896}
-		{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8} = {D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverCELib", "RefEGenDriverCELib.vcxproj", "{20B116BE-5C12-40FA-A771-B395F626BE55}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverDMLib", "RefEGenDriverDMLib.vcproj", "{D95D2369-5385-4EA4-8270-2406741EE27A}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{F1468808-C90B-485A-ADF6-E8B35DE2F896} = {F1468808-C90B-485A-ADF6-E8B35DE2F896}
-		{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8} = {D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverDMLib", "RefEGenDriverDMLib.vcxproj", "{D95D2369-5385-4EA4-8270-2406741EE27A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverMEELib", "RefEGenDriverMEELib.vcproj", "{913034C3-2211-4833-AD3D-FFA8A74FACF1}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8} = {D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenDriverMEELib", "RefEGenDriverMEELib.vcxproj", "{913034C3-2211-4833-AD3D-FFA8A74FACF1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenFlatFileLoader", "RefEGenFlatFileLoad.vcproj", "{003219A5-955B-4DB1-9CA4-B78B121EA13D}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenFlatFileLoader", "RefEGenFlatFileLoad.vcxproj", "{003219A5-955B-4DB1-9CA4-B78B121EA13D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenLogger", "RefEGenLogger.vcproj", "{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenLogger", "RefEGenLogger.vcxproj", "{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenNullLoader", "RefEGenNullLoader.vcproj", "{EB45EBC4-E359-4849-9EA3-3B62B6AD33F0}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenNullLoader", "RefEGenNullLoader.vcxproj", "{EB45EBC4-E359-4849-9EA3-3B62B6AD33F0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenTables", "RefEGenTables.vcproj", "{F1468808-C90B-485A-ADF6-E8B35DE2F896}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(ProjectDependencies) = postProject
-		{D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8} = {D6EF9F4C-2490-4C4F-8DE7-202AFEED2FF8}
-		{003219A5-955B-4DB1-9CA4-B78B121EA13D} = {003219A5-955B-4DB1-9CA4-B78B121EA13D}
-		{913034C3-2211-4833-AD3D-FFA8A74FACF1} = {913034C3-2211-4833-AD3D-FFA8A74FACF1}
-		{0C900BCF-C655-4E18-8CE1-06EA1E5087B8} = {0C900BCF-C655-4E18-8CE1-06EA1E5087B8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenTables", "RefEGenTables.vcxproj", "{F1468808-C90B-485A-ADF6-E8B35DE2F896}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenUtilities", "RefEGenUtilities.vcproj", "{0C900BCF-C655-4E18-8CE1-06EA1E5087B8}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefEGenUtilities", "RefEGenUtilities.vcxproj", "{0C900BCF-C655-4E18-8CE1-06EA1E5087B8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenBaseLoader", "..\..\..\prj\EGenBaseLoader.vcproj", "{B9C2B7D2-F04B-45D1-B201-6AFBFEC8D25F}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -164,11 +92,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenUtilities", "..\..\..\p
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTestSuites", "EGenTestSuites.vcproj", "{BDC9048F-2EC3-42A7-BFEB-100F35B5FDA0}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGenTestSuites", "EGenTestSuites.vcxproj", "{BDC9048F-2EC3-42A7-BFEB-100F35B5FDA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
