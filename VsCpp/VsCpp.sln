@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorldClient", "HelloWo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RpcInterface", "RpcInterface\RpcInterface.vcxproj", "{C6482C50-477D-46BC-B2FE-97211B8A55C8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiThread", "MultiThread\MultiThread.vcxproj", "{2E28612A-DD45-42DE-9628-3F11028A0379}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,10 @@ Global
 		{C6482C50-477D-46BC-B2FE-97211B8A55C8}.Debug|Win32.Build.0 = Debug|Win32
 		{C6482C50-477D-46BC-B2FE-97211B8A55C8}.Release|Win32.ActiveCfg = Release|Win32
 		{C6482C50-477D-46BC-B2FE-97211B8A55C8}.Release|Win32.Build.0 = Release|Win32
+		{2E28612A-DD45-42DE-9628-3F11028A0379}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2E28612A-DD45-42DE-9628-3F11028A0379}.Debug|Win32.Build.0 = Debug|Win32
+		{2E28612A-DD45-42DE-9628-3F11028A0379}.Release|Win32.ActiveCfg = Release|Win32
+		{2E28612A-DD45-42DE-9628-3F11028A0379}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
