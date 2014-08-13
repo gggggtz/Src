@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{36F8142B-6234-497F-97DA-D1218F5270C6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\lib\Debug\</OutDir>
+    <IntDir>..\obj\Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\lib\Release\</OutDir>
+    <IntDir>..\obj\Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;COMPILE_ODBC_LOAD;COMPILE_FLAT_FILE_LOAD;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)EGenTables.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)EGenTables.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;COMPILE_ODBC_LOAD;COMPILE_FLAT_FILE_LOAD;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(OutDir)EGenTables.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)EGenTables.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\AddressTable.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\src\CustomerSelection.cpp" />
+    <ClCompile Include="..\src\CustomerTable.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\src\InputFlatFilesStructure.cpp" />
+    <ClCompile Include="..\src\Person.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\src\ReadRowFunctions.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\inc\EGenTables_StdAfx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\src\TradeGen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\AddressTable.h" />
+    <ClInclude Include="..\inc\Brokers.h" />
+    <ClInclude Include="..\inc\ChargeTable.h" />
+    <ClInclude Include="..\inc\CommissionRateTable.h" />
+    <ClInclude Include="..\inc\CompanyCompetitorFile.h" />
+    <ClInclude Include="..\inc\CompanyCompetitorTable.h" />
+    <ClInclude Include="..\inc\CompanyFile.h" />
+    <ClInclude Include="..\inc\CompanyTable.h" />
+    <ClInclude Include="..\inc\CustomerAccountsAndPermissionsTable.h" />
+    <ClInclude Include="..\inc\CustomerSelection.h" />
+    <ClInclude Include="..\inc\CustomerTable.h" />
+    <ClInclude Include="..\inc\CustomerTaxratesTable.h" />
+    <ClInclude Include="..\inc\DailyMarketTable.h" />
+    <ClInclude Include="..\inc\EGenTables_stdafx.h" />
+    <ClInclude Include="..\inc\ExchangeTable.h" />
+    <ClInclude Include="..\inc\FinancialTable.h" />
+    <ClInclude Include="..\inc\FlatFile.h" />
+    <ClInclude Include="..\inc\HoldingsAndTradesTable.h" />
+    <ClInclude Include="..\inc\IndustryTable.h" />
+    <ClInclude Include="..\inc\InputFile.h" />
+    <ClInclude Include="..\inc\InputFileNoWeight.h" />
+    <ClInclude Include="..\inc\InputFlatFilesDeclarations.h" />
+    <ClInclude Include="..\inc\InputFlatFilesStructure.h" />
+    <ClInclude Include="..\inc\LastTradeTable.h" />
+    <ClInclude Include="..\inc\NewsItemAndXRefTable.h" />
+    <ClInclude Include="..\inc\Person.h" />
+    <ClInclude Include="..\inc\SectorTable.h" />
+    <ClInclude Include="..\inc\SecurityFile.h" />
+    <ClInclude Include="..\inc\SecurityPriceRange.h" />
+    <ClInclude Include="..\inc\SecurityTable.h" />
+    <ClInclude Include="..\inc\StatusTypeTable.h" />
+    <ClInclude Include="..\inc\TableTemplate.h" />
+    <ClInclude Include="..\inc\Table_Defs.h" />
+    <ClInclude Include="..\inc\TaxrateTable.h" />
+    <ClInclude Include="..\inc\TradeGen.h" />
+    <ClInclude Include="..\inc\TradeTypeIDs.h" />
+    <ClInclude Include="..\inc\TradeTypeTable.h" />
+    <ClInclude Include="..\inc\WatchListsAndItemsTable.h" />
+    <ClInclude Include="..\inc\ZipCodeTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="EGenDriverMEELib.vcxproj">
+      <Project>{69127aa7-cac6-442d-981d-72dbe717a93a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

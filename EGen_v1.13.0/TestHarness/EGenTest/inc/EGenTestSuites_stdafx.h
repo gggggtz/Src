@@ -148,8 +148,10 @@
 
 //  Include current code being tested. It is included under TPCE (unchanged) namespace.
 //
-#include "../../../inc/EGenUtilities_stdafx.h"
-#include "../../../inc/EGenTables_stdafx.h"
+//#include "../../../inc/EGenUtilities_stdafx.h"
+#include "../../Reference/inc/EGenUtilities_stdafx.h"
+//#include "../../../inc/EGenTables_stdafx.h"
+#include "../../Reference/inc/EGenTables_stdafx.h"
 //#include "../../../inc/EGenBaseLoader_stdafx.h"
 #include "../../../inc/EGenGenerateAndLoadBaseOutput.h"
 #include "../../../inc/EGenGenerateAndLoadStandardOutput.h"

@@ -48,6 +48,7 @@
 #define TRADE_GEN_H
 
 #include "EGenTables_stdafx.h"
+#include <functional>
 
 namespace TPCE
 {
