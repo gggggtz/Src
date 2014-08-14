@@ -156,3 +156,7 @@ $RECYCLE.BIN/
 .DS_Store
 *.idb
 *.lib
+*.lib
+*.lib
+*.idb
+*.lib
