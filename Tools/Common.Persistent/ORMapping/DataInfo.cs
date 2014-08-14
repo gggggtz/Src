@@ -1,5 +1,5 @@
 ﻿/// <copyright>
-/// Copyright ©  2013 MsTools Corporation. All rights reserved. MsTools CONFIDENTIAL
+/// Copyright ©  2014 Microsoft Corporation. All rights reserved. MsTools CONFIDENTIAL
 /// </copyright>
 using System;
 using System.Collections;

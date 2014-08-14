@@ -1,4 +1,6 @@
-// This is the main DLL file.
+﻿/// <copyright>
+/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
 
 #include "stdafx.h"
 

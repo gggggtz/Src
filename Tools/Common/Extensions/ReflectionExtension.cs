@@ -1,4 +1,7 @@
-﻿using System;
+﻿/// <copyright>
+/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;

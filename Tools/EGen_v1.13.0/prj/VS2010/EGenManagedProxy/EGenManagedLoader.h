@@ -1,4 +1,6 @@
-// EGenManagedProxy.h
+﻿/// <copyright>
+/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
 
 #pragma once
 

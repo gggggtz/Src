@@ -1,4 +1,7 @@
-﻿using System;
+﻿/// <copyright>
+/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Common
+namespace Common.Utility
 {
     public class AssemblyHelper
     {

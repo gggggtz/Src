@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 using namespace System;
 using namespace System::Reflection;
@@ -16,7 +16,7 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyConfigurationAttribute(L"")];
 [assembly:AssemblyCompanyAttribute(L"")];
 [assembly:AssemblyProductAttribute(L"EGenManagedProxy")];
-[assembly:AssemblyCopyrightAttribute(L"Copyright (c)  2014")];
+[assembly:AssemblyCopyrightAttribute(L"Copyright © 2014 Microsoft Corporation")];
 [assembly:AssemblyTrademarkAttribute(L"")];
 [assembly:AssemblyCultureAttribute(L"")];
 

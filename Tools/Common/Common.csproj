@@ -91,9 +91,9 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
-    <Compile Include="AssemblyHelper.cs" />
+    <Compile Include="Utility\AssemblyHelper.cs" />
     <Compile Include="Encryption\StringEncryption.cs" />
-    <Compile Include="ExpressionHelper.cs" />
+    <Compile Include="Utility\ExpressionHelper.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
@@ -115,7 +115,6 @@
     <Compile Include="SafeDictionary.cs" />
     <Compile Include="SafeList.cs" />
     <Compile Include="Singleton.cs" />
-    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Resource\Resource.csproj">
