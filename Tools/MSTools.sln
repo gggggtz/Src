@@ -56,7 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{6AA65AB8-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{7D4406B1-47D7-4BD6-8B1A-62AF1C77C965}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsTools", "MsTools\MsTools.csproj", "{3F593E5A-5612-4811-8921-BA4B52542DE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTools", "MsTools\MSTools.csproj", "{3F593E5A-5612-4811-8921-BA4B52542DE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
