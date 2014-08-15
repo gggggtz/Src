@@ -1,5 +1,5 @@
 ﻿/// <copyright>
-/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
 /// </copyright>
 
 using System;
@@ -11,7 +11,7 @@ using System.Windows.Controls;
 using Common.Notification;
 using Common.Wpf.ViewModel;
 
-namespace Common.Wpf
+namespace Common.Wpf.View
 {
 	/// <summary>
 	/// This is to be used as a base UserControl that is capable to receive messages from ViewModel

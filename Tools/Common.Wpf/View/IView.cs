@@ -1,5 +1,5 @@
 ﻿/// <copyright>
-/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
 /// </copyright>
 
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common.Wpf
+namespace Common.Wpf.View
 {
     public interface IView
     {

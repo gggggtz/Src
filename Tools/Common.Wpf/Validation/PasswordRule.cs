@@ -7,8 +7,12 @@ using System.Windows.Controls;
 
 namespace Common.Wpf.Validation
 {
-    public class PasswordRule:ValidationRule
+    public class PasswordRule : ValidationRuleBase
     {
+        private PasswordRule()
+        {
+            
+        }
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             string password = value as string;

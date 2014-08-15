@@ -1,4 +1,7 @@
-﻿using System;
+﻿/// <copyright>
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace Common.Wpf
+namespace Common.Wpf.View
 {
 	/// <summary>
 	/// The VisualWrapper simply integrates a raw Visual child into a tree of Framework Elements

@@ -1,5 +1,5 @@
 ﻿/// <copyright>
-/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
 /// </copyright>
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Common.Wpf.MultipleUIThreading
+namespace Common.Wpf.View
 {
 	/// <summary>
 	/// The VisualTargetPresentationSource represents the root of a visual subtree owned by

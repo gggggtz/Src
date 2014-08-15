@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace Common.Wpf.Validation
 {
-    public class LetterAndNumberRule:ValidationRule
+    public class LetterAndNumberRule : ValidationRuleBase
     {
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {

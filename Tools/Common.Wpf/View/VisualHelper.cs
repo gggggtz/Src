@@ -1,5 +1,5 @@
 ﻿/// <copyright>
-/// Copyright ©  2014 Microsoft Corporation. All rights reserved. Microsoft CONFIDENTIAL
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
 /// </copyright>
 using System;
 using System.Collections;
@@ -12,9 +12,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Common.Wpf
+namespace Common.Wpf.View
 {
-	public static class Helper
+	public static class VisualHelper
 	{
 
 		/// <summary>
