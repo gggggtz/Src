@@ -154,6 +154,11 @@
     <ClInclude Include="..\..\inc\EGenLogFormatterTab.h" />
     <ClInclude Include="..\..\inc\EGenLogger.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utilities\prj\VS2010\EGenUtilities.vcxproj">
+      <Project>{c83aaab7-c52e-4457-aa88-2c5ab3a8a7b7}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
