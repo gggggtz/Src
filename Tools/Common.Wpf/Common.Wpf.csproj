@@ -88,8 +88,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extension\FrameworkElementExtension.cs" />
+    <Compile Include="Validation\IValidationErrorProvider.cs" />
     <Compile Include="Validation\ValidationRuleManager.cs" />
-    <Compile Include="ViewModel\ValidationViewModelBase.cs" />
+    <Compile Include="Validation\ValidationScope.cs" />
+    <Compile Include="ViewModel\ViewModelBase.Validation.cs" />
     <Compile Include="View\ErrorDecorator.cs" />
     <Compile Include="View\VisualHelper.cs" />
     <Compile Include="View\IView.cs" />
@@ -103,9 +106,7 @@
     <Compile Include="Validation\LetterAndNumberRule.cs" />
     <Compile Include="Validation\PasswordRule.cs" />
     <Compile Include="ViewModel\SecureCommandViewModel.cs" />
-    <Compile Include="ViewModel\ImageViewModel.cs" />
     <Compile Include="ViewModel\SecureCommand.cs" />
-    <Compile Include="ViewModel\TitledViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WebPageViewModel.cs" />
     <Compile Include="View\VisualWrapper.cs" />

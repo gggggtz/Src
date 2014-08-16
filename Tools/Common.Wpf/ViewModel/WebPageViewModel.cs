@@ -8,7 +8,7 @@ namespace Common.Wpf.ViewModel
 {
     [ComVisible(true)]
     [Serializable]
-    public partial class WebPageViewModel : TitledViewModel
+    public partial class WebPageViewModel : ViewModelBase
     {
         /// <summary>
         /// Gets / sets the Body value

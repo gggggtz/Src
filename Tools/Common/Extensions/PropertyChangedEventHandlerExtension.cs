@@ -88,7 +88,7 @@ namespace Common.Extensions
             if (handler != null)
             {
                 string propertyName = ExpressionHelper.GetPropertyName<T>(memberExpression);
-
+                
                 //send the property change event
                 if (!string.IsNullOrEmpty(propertyName))
                 {

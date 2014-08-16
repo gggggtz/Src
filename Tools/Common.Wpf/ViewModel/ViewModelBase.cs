@@ -12,6 +12,7 @@ using Common.ObjectHistory;
 using Common.Wpf.View;
 using System.Collections;
 using System.Collections.Specialized;
+using Common.Wpf.Validation;
 
 namespace Common.Wpf.ViewModel
 {
@@ -19,17 +20,25 @@ namespace Common.Wpf.ViewModel
     {
         public string PropertyName { get; private set; }
         public bool NotifyParent { get; set; }
-        public bool ImpactValidation { get; private set; }
-        public Property(string propName, bool impactValidation = true, bool notifyParent = false)
+
+        private Expression<Func<object>> memberExpression;
+        public Property(string propName, Expression<Func<object>> mExpression, bool notifyParent = true)
         {
             PropertyName = propName;
-            ImpactValidation = impactValidation;
             NotifyParent = notifyParent;
+            memberExpression = mExpression;
+        }
+
+        public List<ValidationRuleBase> Rules = new List<ValidationRuleBase>();
+
+        public object GetValue()
+        {
+            return memberExpression.Compile()();
         }
     }
 
     [Serializable]
-    public class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public abstract partial class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public ViewModelBase()
         {
@@ -122,6 +131,8 @@ namespace Common.Wpf.ViewModel
 
         protected virtual void ReleaseManagedResource()
         {
+            ClearErrors();
+            ValidationCompleted = null;
         }
 
         protected virtual void ReleaseUnManagedResource()
@@ -158,11 +169,14 @@ namespace Common.Wpf.ViewModel
 
         public virtual void Save()
         {
+            changedProperties.Clear();
             Dirty = false;
         }
 
         public virtual void Reset()
         {
+            changedProperties.Clear();
+            ClearErrors();
             Dirty = false;
         }
 
@@ -194,7 +208,6 @@ namespace Common.Wpf.ViewModel
         #region Proected
 
         protected static Hashtable properties = new Hashtable();
-        protected static Hashtable parentProperties = new Hashtable();
         protected void InitializeProperties()
         {
             lock (properties)
@@ -202,13 +215,6 @@ namespace Common.Wpf.ViewModel
                 if (!properties.ContainsKey(this.GetType()))
                 {
                     properties.Add(this.GetType(), ProvideProps());
-                }
-            }
-            lock (parentProperties)
-            {
-                if (!parentProperties.ContainsKey(this.GetType()))
-                {
-                    parentProperties.Add(this.GetType(), GetParentPropertyName());
                 }
             }
             ProvideCollectionProps();
@@ -224,22 +230,12 @@ namespace Common.Wpf.ViewModel
             }
             throw new Exception("Properties not initialized for " + this.GetType().ToString());
         }
-        protected string GetParentProps()
-        {
-            if (parentProperties.ContainsKey(this.GetType()))
-            {
-                return parentProperties[this.GetType()] as string;
-            }
-            throw new Exception("Parent Properties not initialized for " + this.GetType().ToString());
-        }
 
         protected Dictionary<string, Property> changedProperties = new Dictionary<string, Property>();
-
         protected virtual string GetParentPropertyName()
         {
             return string.Empty;
         }
-
         protected virtual Dictionary<string, Property> ProvideProps()
         {
             return new Dictionary<string, Property>(); ;
@@ -247,26 +243,30 @@ namespace Common.Wpf.ViewModel
 
         protected virtual void PropChanged(string prop)
         {
-            var ps = GetProps();
-            if (ps.ContainsKey(prop))
+            lock (changedProperties)
             {
-                var p = ps[prop];
-                if (p != null)
+                if (!changedProperties.ContainsKey(prop))
                 {
-                    Dirty = true;
-                    lock (changedProperties)
+                    var ps = GetProps();
+                    if (ps.ContainsKey(prop))
                     {
-                        if (!changedProperties.ContainsKey(prop))
+                        var p = ps[prop];
+                        Dirty = true;
+                        changedProperties.Add(prop, p);
+                        if (p.NotifyParent)
                         {
-                            changedProperties.Add(prop, p);
+                            var parent = GetParent();
+                            if (parent != null)
+                            {
+                                parent.PropChanged(GetParentPropertyName());
+                            }
                         }
-                    }
-                    if (p.NotifyParent)
-                    {
-                        var parent = GetParent();
-                        if (parent != null)
+                        if (ValidationStatus == ValidationStatus.Valid)
                         {
-                            parent.PropChanged(GetParentProps());
+                            if (p.Rules.Count > 0)
+                            {
+                                ValidationStatus = ValidationStatus.NeedsValidation;
+                            }
                         }
                     }
                 }
@@ -281,14 +281,6 @@ namespace Common.Wpf.ViewModel
         #endregion
 
         #region Public
-
-        public Dictionary<string, Property> ChangedProperties
-        {
-            get
-            {
-                return changedProperties;
-            }
-        }
 
         public ViewModelBase GetTopLevelParent()
         {

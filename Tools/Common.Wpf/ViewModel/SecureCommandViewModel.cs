@@ -7,7 +7,7 @@ using System.Text;
 namespace Common.Wpf.ViewModel
 {
     [Serializable]
-    public class SecureCommandViewModel : TitledViewModel
+    public class SecureCommandViewModel : ViewModelBase
     {        
         public SecureCommand Command { get;private set; }
 

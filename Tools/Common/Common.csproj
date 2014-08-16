@@ -94,10 +94,9 @@
     <Compile Include="Utility\AssemblyHelper.cs" />
     <Compile Include="Encryption\StringEncryption.cs" />
     <Compile Include="Utility\ExpressionHelper.cs" />
-    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
-    <Compile Include="IPersistable.cs" />
     <Compile Include="Net\UdpPacket.cs" />
     <Compile Include="Notification\EnumNotificationMessage.cs" />
     <Compile Include="Notification\IExecuteWithObject.cs" />
