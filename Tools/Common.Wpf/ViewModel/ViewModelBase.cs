@@ -38,7 +38,7 @@ namespace Common.Wpf.ViewModel
     }
 
     [Serializable]
-    public abstract partial class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public partial class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public ViewModelBase()
         {

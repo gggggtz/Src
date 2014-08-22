@@ -91,6 +91,8 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Notification\EventContext.cs" />
+    <Compile Include="Notification\IEventAware.cs" />
     <Compile Include="Utility\AssemblyHelper.cs" />
     <Compile Include="Encryption\StringEncryption.cs" />
     <Compile Include="Utility\ExpressionHelper.cs" />
