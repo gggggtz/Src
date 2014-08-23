@@ -24,14 +24,14 @@ namespace Common.Wpf.Validation
     {
         bool force = false;
         private bool sync = false;
-        private ViewModelBase scope;
+        private ValidatableViewModel scope;
 
-        public ValidationScope(ViewModelBase element, bool force)
+        public ValidationScope(ValidatableViewModel element, bool force)
             : this(element, force, Singleton<ValidationManager>.Instance.ForceSync)
         {
         }
 
-        public ValidationScope(ViewModelBase element, bool force, bool sync)
+        public ValidationScope(ValidatableViewModel element, bool force, bool sync)
         {
             this.scope = element;
             this.force = force;

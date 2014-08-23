@@ -146,6 +146,21 @@ namespace Common.Persistent
             get { return "MASTER"; }
         }
 
+        public override string RowNumSql
+        {
+            get { return "WITH ROWNUM AS (SELECT ROW_NUMBER() OVER (ORDER BY {0}) AS RN, {1} FROM {2} {3}) SELECT {1} FROM ROWNUM"; }
+        }
+
+        public override string BetweenSql
+        {
+            get { return " ({0} BETWEEN {1} AND {2})"; }
+        }
+
+        public override string MaxSql
+        {
+            get { return "SELECT MAX({0}) FROM {1}"; }
+        }
+
         private const string UseString = @" use [{0}]";
 
 

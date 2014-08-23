@@ -17,7 +17,7 @@ using Logging;
 using Common.Persistent.ORMapping;
 using Common.Notification;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	[Table]
 	[Serializable]

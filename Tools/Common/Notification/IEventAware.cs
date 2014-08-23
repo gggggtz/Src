@@ -18,8 +18,6 @@ namespace Common.Notification
         Changed = 4,
         MemberAdded = 8,
         MemberDeleted = 16,
-        SourceCollectionChanged = 32,
-        TargetCollectionChanged = 64,
     }
     public interface IEventAware
     {

@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	/// <summary>
 	/// Represents an abstract mapping object for database types.

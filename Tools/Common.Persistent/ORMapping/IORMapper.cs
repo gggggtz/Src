@@ -11,6 +11,8 @@ namespace Common.Persistent.ORMapping
 
     public interface IORMapper : IEntityAccesser
     {
+        #region String Consts
+
         string And { get; }
         string Comma { get; }
         string ConditionSql { get; }
@@ -41,12 +43,24 @@ namespace Common.Persistent.ORMapping
         string DatabaseExistSql { get; }
         string MasterDatabaseName { get; }
 
+        #endregion
+
         IDbConnection NewConnection();
 
         IDbConnection GetDatabaseConnection(string databaseName);
 
-        void CreateDatabase(string databaseName);
+        #region Execute
+
+        int ExecuteCommand(string cmdText);
+        object ExecuteCommandScalar(string cmdText);
+        int ExecuteStoreProcedure(string spName, List<SPParameter> args);
+        object ExecuteStoreProcedureScalar(string spName, List<SPParameter> args);
+        List<T> ExecuteStoreProcedureReader<T>(string spName, List<SPParameter> args) where T : Entity, new();
         void ExecuteSqlResourceFile(Type typeInResourceAssembly, string fileQualifiedName, IDbConnection connection, bool splitCommands);
+
+        #endregion
+
+        void CreateDatabase(string databaseName);
         void DropDatabase(string databaseName);
         bool DatabaseExist(string databaseName);
         bool StoreProcedureExist(string databaseName, string storeProceudreName);
@@ -58,13 +72,10 @@ namespace Common.Persistent.ORMapping
 
     public interface IBatchORMapper : IORMapper
     {
-        string GetUpdateSetItem(string columnName, int parameterIndex);
-        string GetParameterName(int index);
-
-        bool Exist<T>(string condition, params object[] parameterValues);
-        void Update<T>(string setSql, string condition, params object[] parameterValues);
-        void Delete<T>(string condition, params object[] parameterValues);
-        List<T> Search<T>(string condition, params object[] parameterValues) where T : new();
+        bool Exist<T>(string condition, params object[] parameterValues) where T : Entity;
+        void Update<T>(string setSql, string condition, params object[] parameterValues) where T : Entity;
+        void Delete<T>(string condition, params object[] parameterValues) where T : Entity;
+        List<T> Search<T>(string condition, params object[] parameterValues) where T : Entity, new();
     }
 
 	

@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
-	public abstract class Persistent : IEntity
+	public class Persistent : Entity
 	{
 		[XmlIgnore]
 		public PersistentState PersistentState { get; set; }
@@ -19,7 +19,7 @@ namespace Unitest.TestModel
 			PersistentState = PersistentState.Added;
 		}
 
-		public virtual void LoadCompleted()
+		public override void LoadCompleted()
 		{
 			PersistentState = PersistentState.Loaded;
 		}

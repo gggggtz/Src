@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Common.Persistent.ORMapping;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	[Table]
 	[Serializable]

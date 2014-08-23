@@ -12,42 +12,15 @@ using Common.ObjectHistory;
 using Common.Wpf.View;
 using System.Collections;
 using System.Collections.Specialized;
-using Common.Wpf.Validation;
 
 namespace Common.Wpf.ViewModel
 {
-    public class Property
-    {
-        public string PropertyName { get; private set; }
-        public bool NotifyParent { get; set; }
-
-        private Expression<Func<object>> memberExpression;
-        public Property(string propName, Expression<Func<object>> mExpression, bool notifyParent = true)
-        {
-            PropertyName = propName;
-            NotifyParent = notifyParent;
-            memberExpression = mExpression;
-        }
-
-        public List<ValidationRuleBase> Rules = new List<ValidationRuleBase>();
-
-        public object GetValue()
-        {
-            return memberExpression.Compile()();
-        }
-    }
-
     [Serializable]
     public partial class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public ViewModelBase()
         {
-            InitializeProperties();
-
-            PropertyChanged += (s, e) =>
-                {
-                    PropChanged(e.PropertyName);
-                };
+            
         }
 
         public IView View { get; set; }
@@ -78,10 +51,6 @@ namespace Common.Wpf.ViewModel
         #region Dirty
 
         private bool dirty = false;
-
-        /// <summary>
-        /// Gets / sets the Title value
-        /// </summary>
         public virtual bool Dirty
         {
             get { return dirty; }
@@ -131,8 +100,7 @@ namespace Common.Wpf.ViewModel
 
         protected virtual void ReleaseManagedResource()
         {
-            ClearErrors();
-            ValidationCompleted = null;
+            
         }
 
         protected virtual void ReleaseUnManagedResource()
@@ -169,16 +137,33 @@ namespace Common.Wpf.ViewModel
 
         public virtual void Save()
         {
-            changedProperties.Clear();
             Dirty = false;
         }
 
         public virtual void Reset()
         {
-            changedProperties.Clear();
-            ClearErrors();
             Dirty = false;
         }
+        
+        public ViewModelBase GetTopLevelParent()
+        {
+            var p = GetParent();
+            if (p == null)
+            {
+                return this;
+            }
+            else
+            {
+                return p.GetTopLevelParent();
+            }
+        }
+
+        public virtual ViewModelBase GetParent()
+        {
+            return null;
+        }
+
+        #endregion
 
         public void DispatcherInvoker(Action act, bool async = false)
         {
@@ -200,108 +185,5 @@ namespace Common.Wpf.ViewModel
                 act();
             }
         }
-
-        #endregion
-
-        #region Property Handling
-
-        #region Proected
-
-        protected static Hashtable properties = new Hashtable();
-        protected void InitializeProperties()
-        {
-            lock (properties)
-            {
-                if (!properties.ContainsKey(this.GetType()))
-                {
-                    properties.Add(this.GetType(), ProvideProps());
-                }
-            }
-            ProvideCollectionProps();
-        }
-        protected virtual void ProvideCollectionProps()
-        {
-        }
-        protected Dictionary<string, Property> GetProps()
-        {
-            if (properties.ContainsKey(this.GetType()))
-            {
-                return properties[this.GetType()] as Dictionary<string, Property>;
-            }
-            throw new Exception("Properties not initialized for " + this.GetType().ToString());
-        }
-
-        protected Dictionary<string, Property> changedProperties = new Dictionary<string, Property>();
-        protected virtual string GetParentPropertyName()
-        {
-            return string.Empty;
-        }
-        protected virtual Dictionary<string, Property> ProvideProps()
-        {
-            return new Dictionary<string, Property>(); ;
-        }
-
-        protected virtual void PropChanged(string prop)
-        {
-            lock (changedProperties)
-            {
-                if (!changedProperties.ContainsKey(prop))
-                {
-                    var ps = GetProps();
-                    if (ps.ContainsKey(prop))
-                    {
-                        var p = ps[prop];
-                        Dirty = true;
-                        changedProperties.Add(prop, p);
-                        if (p.NotifyParent)
-                        {
-                            var parent = GetParent();
-                            if (parent != null)
-                            {
-                                parent.PropChanged(GetParentPropertyName());
-                            }
-                        }
-                        if (ValidationStatus == ValidationStatus.Valid)
-                        {
-                            if (p.Rules.Count > 0)
-                            {
-                                ValidationStatus = ValidationStatus.NeedsValidation;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        protected virtual void RegisterCollectionChanged<T>(INotifyCollectionChanged prop, string propertyName)
-        {
-            prop.CollectionChanged += (s, e) => { this.PropChanged(propertyName); };
-        }
-
-        #endregion
-
-        #region Public
-
-        public ViewModelBase GetTopLevelParent()
-        {
-            var p = GetParent();
-            if (p == null)
-            {
-                return this;
-            }
-            else
-            {
-                return p.GetTopLevelParent();
-            }
-        }
-
-        public virtual ViewModelBase GetParent()
-        {
-            return null;
-        }
-
-        #endregion
-
-        #endregion
     }
 }

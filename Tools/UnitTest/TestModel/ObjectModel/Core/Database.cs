@@ -14,7 +14,7 @@ using Common;
 using Logging;
 using Common.Persistent.ORMapping;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	/// <summary>
 	/// The empty base class for all databases

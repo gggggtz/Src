@@ -18,7 +18,7 @@ namespace Common.Wpf.ViewModel
         Invalid,
         NeedsValidation
     }
-    public partial class ViewModelBase
+    public partial class ValidatableViewModel : PropertizedViewModel
     {
 
         #region Validation Properties
@@ -88,7 +88,7 @@ namespace Common.Wpf.ViewModel
 
         private void ValidateParent()
         {
-            var p = GetParent();
+            var p = GetParent() as ValidatableViewModel;
             if(p != null)
             {
                 p.Validate();
@@ -108,6 +108,42 @@ namespace Common.Wpf.ViewModel
         
         #endregion
 
+        #region Overrides
 
+        public override void Reset()
+        {
+            ClearErrors();
+            base.Reset();
+        }
+        protected override void PropChanged(string prop)
+        {
+            lock (changedProperties)
+            {
+                if (!changedProperties.ContainsKey(prop))
+                {
+                    var ps = GetProps();
+                    if (ps.ContainsKey(prop))
+                    {
+                        var p = ps[prop];
+                        if (ValidationStatus == ValidationStatus.Valid)
+                        {
+                            if (p.Rules.Count > 0)
+                            {
+                                ValidationStatus = ValidationStatus.NeedsValidation;
+                            }
+                        }
+                        base.PropChanged(prop);
+                    }
+                }
+            }
+        }
+        protected override void ReleaseManagedResource()
+        {
+            ClearErrors();
+            ValidationCompleted = null;
+            base.ReleaseManagedResource();
+        }
+
+        #endregion
     }
 }

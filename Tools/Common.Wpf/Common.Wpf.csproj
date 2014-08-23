@@ -92,8 +92,8 @@
     <Compile Include="Validation\IValidationErrorProvider.cs" />
     <Compile Include="Validation\ValidationRuleManager.cs" />
     <Compile Include="Validation\ValidationScope.cs" />
-    <Compile Include="ViewModel\DataViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.Validation.cs" />
+    <Compile Include="ViewModel\PropertizedViewModel.cs" />
+    <Compile Include="ViewModel\ValidatableViewModel.cs" />
     <Compile Include="View\ErrorDecorator.cs" />
     <Compile Include="View\VisualHelper.cs" />
     <Compile Include="View\IView.cs" />

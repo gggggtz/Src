@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using Common;
 using Logging;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	[Table]
 	[Serializable]
@@ -21,7 +21,7 @@ namespace Unitest.TestModel
 		public Expression()
 			: base(TableType.Expression)
 		{
-			this.Language = Unitest.TestModel.Language.CSharp;
+			this.Language = UnitTest.TestModel.Language.CSharp;
 		}
 
 		#region ORMapping Columns

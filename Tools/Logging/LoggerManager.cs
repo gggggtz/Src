@@ -36,7 +36,7 @@ namespace Logging
 		/// <param name="filePath">The path of the config file.</param>
 		public static void Initialize(string filePath)
 		{
-			FileInfo fileInfo = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + filePath);
+			FileInfo fileInfo = new FileInfo(Path.Combine(Environment.CurrentDirectory, filePath));
 			XmlConfigurator.ConfigureAndWatch(Log4netLoggerManager.GetRepository(Assembly.GetExecutingAssembly()), fileInfo);
 		}
 
@@ -45,7 +45,7 @@ namespace Logging
 		/// </summary>
 		/// <param name="loggerName">The name of Logger which will be created.</param>
 		/// <returns>An instance of <c>Logger</c>.</returns>
-		public static Logger GetLogger(string loggerName)
+        private static Logger GetLogger(string loggerName)
 		{
 			Logger logger = null;
 			if (!string.IsNullOrEmpty(loggerName))
@@ -172,8 +172,5 @@ namespace Logging
 	{
 		FileLogger = 1,
 		EventLogLogger =2,
-		ImportLogger =3,
-		ExportLogger = 4,
-		TransactionLogger = 7
 	}
 }

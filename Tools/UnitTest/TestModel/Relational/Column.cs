@@ -10,7 +10,7 @@ using Common.Persistent.ORMapping;
 using Common;
 using Logging;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	[Table]
 	[Serializable]

@@ -16,7 +16,6 @@ namespace Common.Persistent.ORMapping
     public class SPParameter
     {
         public const int DefaultSize = -1;
-
         public string Name { get; set; }
         public DbType Type { get; set; }
         public object Value { get; set; }
@@ -210,6 +209,28 @@ namespace Common.Persistent.ORMapping
             }
         }
 
+        protected string keys;
+        public virtual string GetKeys(string comma, string dot, string leftSquare, string rightSquare, bool includeTableName = false)
+        {
+            if (string.IsNullOrEmpty(keys))
+            {
+                List<string> names = new List<string>();
+                foreach (string name in PrimaryKeys.Keys)
+                {
+                    if (includeTableName)
+                    {
+                        names.Add(leftSquare + Name + rightSquare + dot + leftSquare + name + rightSquare);
+                    }
+                    else
+                    {
+                        names.Add(leftSquare + name + rightSquare);
+                    }
+                }
+                keys = string.Join(comma, names);
+            }
+            return keys;
+        }
+
         protected string selectColumns;
         protected string selectColumnsWithKey;
         protected string insertColumns;
@@ -305,7 +326,7 @@ namespace Common.Persistent.ORMapping
         protected virtual ColumnCollectionInfo GetBaseInfo(Type type)
         {
             var t = type.BaseType;
-            while (t != typeof(IEntity) && t != null)
+            while (t != typeof(Entity) && t != null)
             {
                 var info = GetInfo(t);
                 if (info != null)
@@ -440,6 +461,28 @@ namespace Common.Persistent.ORMapping
                 info.SetInfo(type);
             }
             return info;
+        }
+
+        protected string keys;
+        public virtual string GetKeys(string comma, string dot, string leftSquare, string rightSquare, bool includeTableName = false)
+        {
+            if (string.IsNullOrEmpty(keys))
+            {
+                List<string> names = new List<string>();
+                foreach (string name in PrimaryKeys.Keys)
+                {
+                    if (includeTableName)
+                    {
+                        names.Add(leftSquare + Name + rightSquare + dot + leftSquare + name + rightSquare);
+                    }
+                    else
+                    {
+                        names.Add(leftSquare + name + rightSquare);
+                    }
+                }
+                keys = string.Join(comma, names);
+            }
+            return keys;
         }
 
         protected string fromClause;

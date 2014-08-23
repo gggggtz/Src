@@ -18,19 +18,135 @@ namespace Common.Persistent.ORMapping
         public bool IncludeSchema { get { return !string.IsNullOrEmpty(SchemaName); } }
         public string SchemaName { get; set; }
 
+        #region Const Strings
+
+        public abstract string Join { get; }
+        public abstract string On { get; }
+        public abstract string Equal { get; }
+        public abstract string Dot { get; }
+
+        public abstract string CountSql
+        {
+            get;
+        }
+
+        public abstract string FindSql
+        {
+            get;
+        }
+
+        public abstract string FindAttributeSql
+        {
+            get;
+        }
+
+        public abstract string WhereSql
+        {
+            get;
+        }
+
+        public abstract string OrderSql
+        {
+            get;
+        }
+
+        public abstract string ConditionSql
+        {
+            get;
+        }
+
+        public abstract string UpdateSql
+        {
+            get;
+        }
+
+        public abstract string DeleteSql
+        {
+            get;
+        }
+
+        public abstract string InsertSql
+        {
+            get;
+        }
+
+        public abstract string SetSql
+        {
+            get;
+        }
+
+        public abstract string Comma
+        {
+            get;
+        }
+
+        public abstract string SemiColon
+        {
+            get;
+        }
+
+        public abstract string And { get; }
+
+        public abstract string UpdateSqlValueParameterName
+        {
+            get;
+        }
+
+        public abstract string UpdateSqlValueParameter
+        {
+            get;
+        }
+
+        public abstract string KeySqlValueParameterName
+        {
+            get;
+        }
+
+        public abstract string KeySqlValueParameter
+        {
+            get;
+        }
+
+        public abstract string LeftSquare { get; }
+
+        public abstract string RightSquare { get; }
+
+        public abstract string StoreProcedureExistSql { get; }
+
+        public abstract string CreateDatabaseSql { get; }
+
+        public abstract string DropDatabaseSql { get; }
+
+        public abstract string CommandSpitterRegexString { get; }
+
+        public abstract string DatabaseExistSql { get; }
+
+        public abstract string MasterDatabaseName { get; }
+
+        public abstract string BetweenSql { get; }
+
+        public abstract string RowNumSql { get; }
+
+        public abstract string MaxSql
+        {
+            get;
+        }
+
+        #endregion
+
         #region Implement IBatchORMapper
 
-        public string GetUpdateSetItem(string columnName, int parameterIndex)
+        private string GetUpdateSetItem(string columnName, int parameterIndex)
         {
             return string.Format(SetSql, columnName, GetParameterName(parameterIndex));
         }
 
-        public string GetParameterName(int index)
+        private string GetParameterName(int index)
         {
             return string.Format(UpdateSqlValueParameter, index);
         }
 
-        public bool Exist<T>(string condition, params object[] parameterValues)
+        public bool Exist<T>(string condition, params object[] parameterValues) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -40,7 +156,7 @@ namespace Common.Persistent.ORMapping
             }
         }
 
-        public void Update<T>(string setSql, string condition, params object[] parameterValues)
+        public void Update<T>(string setSql, string condition, params object[] parameterValues) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -52,7 +168,7 @@ namespace Common.Persistent.ORMapping
             }
         }
 
-        public void Delete<T>(string condition, params object[] parameterValues)
+        public void Delete<T>(string condition, params object[] parameterValues) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -64,7 +180,7 @@ namespace Common.Persistent.ORMapping
             }
         }
 
-        public List<T> Search<T>(string condition, params object[] parameterValues) where T : new()
+        public List<T> Search<T>(string condition, params object[] parameterValues) where T : Entity,new ()
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -162,14 +278,7 @@ namespace Common.Persistent.ORMapping
             return cmd;
         }
 
-        private void AddParameter(string parameterName, Object parameterValue, IDbCommand command)
-        {
-            IDataParameter parameter = command.CreateParameter();
-            parameter.ParameterName = parameterName;
-            parameter.Value = parameterValue;
-            parameter.Direction = ParameterDirection.Input;
-            command.Parameters.Add(parameter);
-        }
+        
 
         #endregion
 
@@ -218,7 +327,7 @@ namespace Common.Persistent.ORMapping
 
         #region Insert
 
-        public void Insert<T>(T obj) where T: IEntity, new()
+        public void Insert<T>(T obj) where T: Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -339,7 +448,7 @@ namespace Common.Persistent.ORMapping
 
         #region Update
 
-        public void Update<T>(T obj) where T : IEntity, new()
+        public void Update<T>(T obj) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -512,7 +621,7 @@ namespace Common.Persistent.ORMapping
 
         #region Delete
 
-        public void Delete<T>(T obj) where T : IEntity, new()
+        public void Delete<T>(T obj) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -570,9 +679,9 @@ namespace Common.Persistent.ORMapping
 
         #endregion
 
-        #region Select
+        #region Load
 
-        public void   Load<T>(T obj) where T : IEntity
+        public void  Load<T>(T obj) where T : Entity
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -618,16 +727,16 @@ namespace Common.Persistent.ORMapping
 
         #region Search
 
-        public virtual List<T> Search<T>(string condition = "", string order = "") where T : IEntity, new()
+        public virtual List<T> Search<T>(string condition = "", string order = "", int start = -1, int count = -1) where T : Entity, new()
         {
             using (IDbConnection conn = NewConnection())
             {
                 conn.Open();
-                return ExecuteSearchCommand<T>(GetSearchCommand<T>(conn, condition, order));
+                return ExecuteSearchCommand<T>(GetSearchCommand<T>(conn, condition, order, start, count));
             }
         }
 
-        public List<TEntity> Search<TOwner, TEntity>(TOwner owner, Expression<Func<TOwner, IEnumerable>> exp, string order = "") where TEntity : IEntity, new()
+        public List<TEntity> Search<TOwner, TEntity>(TOwner owner, Expression<Func<TOwner, IEnumerable>> exp, string order = "") where TEntity : Entity, new()
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -636,7 +745,7 @@ namespace Common.Persistent.ORMapping
             }
         }
 
-        public List<TEntity> Search<TOwner, TEntity>(TOwner owner, string collectionName, string order = "") where TEntity : IEntity, new()
+        public List<TEntity> Search<TOwner, TEntity>(TOwner owner, string collectionName, string order = "") where TEntity : Entity, new()
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -645,26 +754,57 @@ namespace Common.Persistent.ORMapping
             }
         }
 
-        public IDbCommand GetSearchCommand<T>(IDbConnection conn, string condition = "", string order = "")
+        public IDbCommand GetSearchCommand<T>(IDbConnection conn, string condition = "", string order = "", int start = -1, int count = -1)
         {
             IDbCommand command = conn.CreateCommand();
             var dataInfo = ColumnCollectionInfo.GetInfo(typeof(T));
             string sql = string.Empty;
-            sql = string.Format(FindSql, dataInfo.GetAllSelectColumns(Comma, true, Dot, LeftSquare, RightSquare), dataInfo.GetFromClause(Join, On, Equal, Dot, LeftSquare, RightSquare, And, IncludeSchema, SchemaName));
-            if (!string.IsNullOrEmpty(condition))
+            bool useRowNumber = start > 0 || count > 0;
+            string rowNumberOrder = string.IsNullOrEmpty(order) ? dataInfo.GetKeys(Comma, Dot, LeftSquare, RightSquare) : order;
+            string rowNumberWhere = string.Empty;
+
+            string rowNumberCondition = string.Empty;
+            if (useRowNumber)
             {
-                sql = string.Format(WhereSql, sql, condition);
+                int startNumber = start > 0 ? start : 1;
+                if (count > 0)
+                {
+                    rowNumberCondition += string.Format(BetweenSql, "RN", startNumber, startNumber + count - 1);
+                }
+                else
+                {
+                    rowNumberCondition += string.Format("(RN > {0})", startNumber);
+                }
+
+                rowNumberWhere = string.IsNullOrEmpty(condition) ? string.Empty : " WHERE " + condition;
+
+                sql = string.Format(RowNumSql, rowNumberOrder,
+                    dataInfo.GetAllSelectColumns(Comma, true, Dot, LeftSquare, RightSquare),
+                    dataInfo.GetFromClause(Join, On, Equal, Dot, LeftSquare, RightSquare, And, false), rowNumberWhere);
+
+                if (!string.IsNullOrEmpty(rowNumberCondition))
+                {
+                    sql = string.Format(WhereSql, sql, rowNumberCondition);
+                }
             }
-            if (!string.IsNullOrEmpty(order))
+            else
             {
-                sql = string.Format(OrderSql, sql, order);
+                sql = string.Format(FindSql, dataInfo.GetAllSelectColumns(Comma, true, Dot, LeftSquare, RightSquare), dataInfo.GetFromClause(Join, On, Equal, Dot, LeftSquare, RightSquare, And, false));
+                if (!string.IsNullOrEmpty(condition))
+                {
+                    sql = string.Format(WhereSql, sql, condition);
+                }
+                if (!string.IsNullOrEmpty(order))
+                {
+                    sql = string.Format(OrderSql, sql, order);
+                }
             }
             command.CommandText = sql;
             return command;
         }
 
         public IDbCommand GetSearchCommand<TOwner, TEntity>(IDbConnection conn, TOwner owner, Expression<Func<TOwner, IEnumerable>> exp, string order = "")
-            where TEntity : IEntity
+            where TEntity : Entity
         {
             MemberExpression body = exp.Body as MemberExpression;
             if (body == null)
@@ -728,7 +868,7 @@ namespace Common.Persistent.ORMapping
             return command;
         }
 
-        private List<T> ExecuteSearchCommand<T>(IDbCommand command) where T : new()
+        private List<T> ExecuteSearchCommand<T>(IDbCommand command) where T : Entity, new()
         {
             List<T> result = new List<T>();
             using (command)
@@ -748,9 +888,9 @@ namespace Common.Persistent.ORMapping
                                 column.SetValue(obj, reader.GetValue(i));
                             }
                         }
-                        if (obj is IEntity)
+                        if (obj is Entity)
                         {
-                            (obj as IEntity).LoadCompleted();
+                            (obj as Entity).LoadCompleted();
                         }
                         result.Add(obj);
                     }
@@ -791,130 +931,40 @@ namespace Common.Persistent.ORMapping
             return string.Join(And, conditions.ToArray());
         }
 
-        private void AddParameter(ColumnInfo columnInfo, string parameterName, Object parameterValue, IDbCommand command)
+        private void AddParameter(string name, object value, IDbCommand command)
         {
             IDataParameter parameter = command.CreateParameter();
-            parameter.ParameterName = parameterName;
-            SetParameter(parameter, columnInfo, parameterValue);
+            parameter.ParameterName = name;
+            parameter.Value = value;
+            parameter.Direction = ParameterDirection.Input;
             command.Parameters.Add(parameter);
         }
 
-        private void SetParameter(IDataParameter parameter, ColumnInfo column, Object value)
+        private void AddParameter(ColumnInfo column,string name, object value, IDbCommand command)
         {
+            IDataParameter parameter = command.CreateParameter();
+            parameter.ParameterName = name;
+            parameter.Value = value;
+            parameter.Direction = ParameterDirection.Input;
             if (!InvalidDbTypes.Contains(column.Type))
             {
                 parameter.DbType = column.Type;
             }
-            parameter.Value = value;
-            parameter.Direction = ParameterDirection.Input;
+            command.Parameters.Add(parameter);
         }
 
-        #endregion
-
-        #region Const Strings
-
-        public abstract string Join { get; }
-        public abstract string On { get; }
-        public abstract string Equal { get; }
-        public abstract string Dot { get; }
-
-        public abstract string CountSql
+        private void AddParameter(IDbCommand command, SPParameter spParam)
         {
-            get;
+            IDataParameter parameter = command.CreateParameter();
+            parameter.ParameterName = spParam.Name;
+            parameter.Value = spParam.Value;
+            parameter.Direction = spParam.Direction;
+            if (!InvalidDbTypes.Contains(spParam.Type))
+            {
+                parameter.DbType = spParam.Type;
+            }
+            command.Parameters.Add(parameter);
         }
-
-        public abstract string FindSql
-        {
-            get;
-        }
-
-        public abstract string FindAttributeSql
-        {
-            get;
-        }
-
-        public abstract string WhereSql
-        {
-            get;
-        }
-
-        public abstract string OrderSql
-        {
-            get;
-        }
-
-        public abstract string ConditionSql
-        {
-            get;
-        }
-
-        public abstract string UpdateSql
-        {
-            get;
-        }
-
-        public abstract string DeleteSql
-        {
-            get;
-        }
-
-        public abstract string InsertSql
-        {
-            get;
-        }
-
-        public abstract string SetSql
-        {
-            get;
-        }
-
-        public abstract string Comma
-        {
-            get;
-        }
-
-        public abstract string SemiColon
-        {
-            get;
-        }
-
-        public abstract string And { get; }
-
-        public abstract string UpdateSqlValueParameterName
-        {
-            get;
-        }
-
-        public abstract string UpdateSqlValueParameter
-        {
-            get;
-        }
-
-        public abstract string KeySqlValueParameterName
-        {
-            get;
-        }
-
-        public abstract string KeySqlValueParameter
-        {
-            get;
-        }
-
-        public abstract string LeftSquare { get; }
-
-        public abstract string RightSquare { get; }
-
-        public abstract string StoreProcedureExistSql { get; }
-
-        public abstract string CreateDatabaseSql { get; }
-
-        public abstract string DropDatabaseSql { get; }
-
-        public abstract string CommandSpitterRegexString { get; }
-
-        public abstract string DatabaseExistSql { get; }
-
-        public abstract string MasterDatabaseName { get; }
 
         #endregion
 
@@ -931,8 +981,19 @@ namespace Common.Persistent.ORMapping
                 return command.ExecuteNonQuery();
             }
         }
+        public object ExecuteCommandScalar(string cmdText)
+        {
+            using (IDbConnection conn = NewConnection())
+            {
+                conn.Open();
+                IDbCommand command = conn.CreateCommand();
+                command.CommandText = cmdText;
+                command.CommandType = CommandType.Text;
+                return command.ExecuteScalar();
+            }
+        }
 
-        public void ExecuteStoreProcedure(string procName, IEnumerable<SPParameter> args)
+        public int ExecuteStoreProcedure(string procName, List<SPParameter> args)
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -944,12 +1005,7 @@ namespace Common.Persistent.ORMapping
                 {
                     foreach (var arg in args)
                     {
-                        var p = command.CreateParameter();
-                        p.DbType = arg.Type;
-                        p.ParameterName = arg.Name;
-                        p.Direction = arg.Direction;
-                        p.Value = arg.Value;
-                        command.Parameters.Add(p);
+                        AddParameter(command, arg);
                     }
                 }
 
@@ -957,7 +1013,7 @@ namespace Common.Persistent.ORMapping
                 // it takes really long time if the database is big.
                 command.CommandTimeout = 120;
 
-                command.ExecuteNonQuery();
+                var r = command.ExecuteNonQuery();
 
                 foreach (IDbDataParameter p in command.Parameters)
                 {
@@ -970,10 +1026,11 @@ namespace Common.Persistent.ORMapping
                         }
                     }
                 }
+                return r;
             }
         }
 
-        public object ExecuteStoreProcedureScalar(string procName, IEnumerable<SPParameter> args)
+        public object ExecuteStoreProcedureScalar(string procName, List<SPParameter> args)
         {
             using (IDbConnection conn = NewConnection())
             {
@@ -987,17 +1044,7 @@ namespace Common.Persistent.ORMapping
                     {
                         foreach (var arg in args)
                         {
-                            var p = command.CreateParameter();
-                            p.DbType = arg.Type;
-                            p.ParameterName = arg.Name;
-                            p.Direction = arg.Direction;
-                            p.Value = arg.Value;
-
-                            if (arg.Size != SPParameter.DefaultSize)
-                            {
-                                p.Size = arg.Size;
-                            }
-                            command.Parameters.Add(p);
+                            AddParameter(command, arg);
                         }
                     }
 
@@ -1023,6 +1070,36 @@ namespace Common.Persistent.ORMapping
             }
         }
 
+        public List<T> ExecuteStoreProcedureReader<T>(string procName, List<SPParameter> args) where T : Entity, new()
+        {
+            List<T> result = new List<T>();
+            using (IDbConnection conn = NewConnection())
+            {
+                conn.Open();
+                IDbCommand command = GetStoreProcedureCommand(conn, procName, args);
+                var dataInfo = ColumnCollectionInfo.GetInfo(typeof(T));
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        T obj = new T();
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string name = reader.GetName(i);
+                            ColumnInfo column = dataInfo[name];
+                            if (column != null)
+                            {
+                                column.SetValue(obj, reader.GetValue(i));
+                            }
+                        }
+                        obj.LoadCompleted();
+                        result.Add(obj);
+                    }
+                }
+            }
+            return result;
+        }
+
         public virtual void ExecuteSqlResourceFile(Type typeInResourceAssembly, string fileQualifiedName, IDbConnection connection, bool splitCommands)
         {
             using (var command = connection.CreateCommand())
@@ -1046,6 +1123,78 @@ namespace Common.Persistent.ORMapping
             }
         }
 
+        private IDbCommand GetStoreProcedureCommand(IDbConnection conn, string spName, List<SPParameter> args)
+        {
+            IDbCommand command = conn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = spName;
+            foreach (var arg in args)
+            {
+                AddParameter(command, arg);
+            }
+            return command;
+        }
+
+        #endregion
+
+        #region Count
+
+        public int GetCount<T>(string condition = "") where T : Entity
+        {
+            using (IDbConnection conn = NewConnection())
+            {
+                conn.Open();
+                IDbCommand command = GetCountCommand<T>(conn, condition);
+                object result = command.ExecuteScalar();
+                return (int)result;
+            }
+        }
+
+        private IDbCommand GetCountCommand<T>(IDbConnection conn, string condition = "") where T : Entity
+        {
+            IDbCommand command = conn.CreateCommand();
+            var dataInfo = ColumnCollectionInfo.GetInfo(typeof(T));
+            string sql = string.Empty;
+            sql = string.Format(CountSql, dataInfo.Name);
+            if (!string.IsNullOrEmpty(condition))
+            {
+                sql = string.Format(WhereSql, sql, condition);
+            }
+            command.CommandText = sql;
+            return command;
+        }
+
+        #endregion
+
+        #region Max
+
+        public int GetMax<T>(string name) where T : Entity
+        {
+            if (GetCount<T>() == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                using (IDbConnection conn = NewConnection())
+                {
+                    conn.Open();
+                    IDbCommand command = GetMaxCommand<T>(conn,name);
+                    object result = command.ExecuteScalar();
+                    return (int)result;
+                }
+            }
+        }
+
+        private IDbCommand GetMaxCommand<T>(IDbConnection conn,string name) where T : Entity
+        {
+            IDbCommand command = conn.CreateCommand();
+            var dataInfo = ColumnCollectionInfo.GetInfo(typeof(T));
+            command.CommandText = string.Format(MaxSql, name, dataInfo.Name);
+            return command;
+        }
+
+        
 
         #endregion
 
@@ -1092,61 +1241,5 @@ namespace Common.Persistent.ORMapping
 
         public abstract bool IsSystemDatabase(string databaseName);
 
-
-
-        void IEntityAccesser.Load<T>(T obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<T> Search<T>(string condition = "", string order = "", int start = -1, int count = -1) where T : IEntity, new()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Initialize(bool reset)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetCount<T>(string condition = "") where T : IEntity, new()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetMax<T>() where T : IEntity, new()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int ExecuteSPNonQuery(string spName, List<SPParameter> args)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ExecuteSPScalar(string spName, List<SPParameter> args)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int ExecuteSPReturn(string spName, List<SPParameter> args)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<T> ExecuteSPReader<T>(string spName, List<SPParameter> args) where T : IEntity, new()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> ExecuteCommandReader(string cmdText)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ExecuteCommandScalar(string cmdText)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

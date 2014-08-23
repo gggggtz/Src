@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
 	public enum TableType : int
 	{

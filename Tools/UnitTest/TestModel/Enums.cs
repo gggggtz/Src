@@ -3,7 +3,7 @@
 /// </copyright>
 
 using System;
-namespace Unitest.TestModel
+namespace UnitTest.TestModel
 {
     public enum ClassifierType : short
     {
@@ -352,6 +352,5 @@ namespace Unitest.TestModel
         Loaded = 1,
         Added = 2,
         Changed = 4,
-        Imported = 8,
     }
 }
