@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Persistent;
+using Model;
 
 namespace TestConsole
 {
     class Program
     {
         static void Main(string[] args)
+        {
+        }
+
+        static void TestSHA1()
         {
             byte[] data = System.Text.Encoding.Default.GetBytes("I am not a robot");//以字节方式存储
             System.Security.Cryptography.SHA1 sha1 = new System.Security.Cryptography.SHA1CryptoServiceProvider();
@@ -19,5 +26,7 @@ namespace TestConsole
             Console.WriteLine(r2);
             Console.ReadLine();
         }
+
+       
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="MsTools.AzureCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="WebRole.MsTools.AzureCloudService">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mstoolsstorage;AccountKey=dUP8eQwH+UQ7S28ywwwaOQVq6ODbGrIulUMMMo839H1JofvNRxoDVHoUNax5zAeLTwkpjDvgvBpb1zZ1TBg/5g==" />
+      <Setting name="AzureStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mstoolsstorage;AccountKey=dUP8eQwH+UQ7S28ywwwaOQVq6ODbGrIulUMMMo839H1JofvNRxoDVHoUNax5zAeLTwkpjDvgvBpb1zZ1TBg/5g==" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureBlobRetryPolicyAttempts" value="3" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureQueueRetryPolicyAttempts" value="3" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" value="Server=tcp:lsjwzwdtvy.database.windows.net,1433;Database=mstoolsdb;User ID=mobilemanager@lsjwzwdtvy;Password=Welcome1;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="WorkerRole.MsTools.AzureCloudService">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mstoolsstorage;AccountKey=dUP8eQwH+UQ7S28ywwwaOQVq6ODbGrIulUMMMo839H1JofvNRxoDVHoUNax5zAeLTwkpjDvgvBpb1zZ1TBg/5g==" />
+      <Setting name="AzureStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mstoolsstorage;AccountKey=dUP8eQwH+UQ7S28ywwwaOQVq6ODbGrIulUMMMo839H1JofvNRxoDVHoUNax5zAeLTwkpjDvgvBpb1zZ1TBg/5g==" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureBlobRetryPolicyAttempts" value="3" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureQueueRetryPolicyAttempts" value="3" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" value="Server=tcp:lsjwzwdtvy.database.windows.net,1433;Database=mstoolsdb;User ID=mobilemanager@lsjwzwdtvy;Password=Welcome1;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

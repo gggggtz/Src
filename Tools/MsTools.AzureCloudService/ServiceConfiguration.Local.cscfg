@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="MsTools.AzureCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="WebRole.MsTools.AzureCloudService">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageConnectionString" value="" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureBlobRetryPolicyAttempts" value="3" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureQueueRetryPolicyAttempts" value="3" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" value="" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="WorkerRole.MsTools.AzureCloudService">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureStorageConnectionString" value="" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureBlobRetryPolicyAttempts" value="3" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" value="3" />
+      <Setting name="AzureQueueRetryPolicyAttempts" value="3" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" value="" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

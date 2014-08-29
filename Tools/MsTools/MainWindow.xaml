@@ -1,8 +1,9 @@
-﻿<Window x:Class="MsTools.MainWindow"
+﻿<local:WindowBase x:Class="MsTools.MainWindow"
+        xmlns:local ="clr-namespace:MsTools" 
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        x:TypeArguments="vm:MainWindowActions">
+    <Grid Style="{StaticResource WindowContentStyle}">
+    </Grid>    
+</local:WindowBase>

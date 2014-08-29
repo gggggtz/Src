@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="MsTools.AzureCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WebRole name="WebRole.MsTools.AzureCloudService" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="AzureStorageConnectionString" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" />
+      <Setting name="AzureBlobRetryPolicyAttempts" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" />
+      <Setting name="AzureQueueRetryPolicyAttempts" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+  <WorkerRole name="WorkerRole.MsTools.AzureCloudService" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="AzureStorageConnectionString" />
+      <Setting name="AzureBlobRetryPolicyTimeOut" />
+      <Setting name="AzureBlobRetryPolicyAttempts" />
+      <Setting name="AzureQueueRetryPolicyTimeOut" />
+      <Setting name="AzureQueueRetryPolicyAttempts" />
+      <Setting name="AzureSQLServerDatabaseConnectionString" />
+    </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>

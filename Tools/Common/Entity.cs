@@ -6,16 +6,30 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace Common.Persistent
+namespace Common
 {
     public interface IEntity
     {
         void LoadCompleted();
     }
 
+    public enum PersistentState
+    {
+        None = 0,
+        Loaded = 1,
+        Added = 2,
+        Changed = 4,
+    }
+
     public abstract class Entity : IEntity, IEventAware
     {
+        public Entity()
+        {
+            PersistentState = PersistentState.Added;
+        }
+
         #region Events
 
         public static event Action<Entity> ElementAdded;
@@ -24,16 +38,7 @@ namespace Common.Persistent
         public event Action<Entity> MemberAdded;
         public event Action<Entity> MemberDeleted;
 
-        #endregion
-
         protected Events events;
-
-        public abstract void LoadCompleted();
-
-        public virtual Entity GetParent()
-        {
-            return null;
-        }
 
         protected EventContext eventContext
         {
@@ -42,6 +47,25 @@ namespace Common.Persistent
                 return Singleton<EventContext.EventContextManager>.Instance.EventContext;
             }
         }
+
+        #endregion
+
+        #region PersistentState
+
+        [XmlIgnore]
+        public PersistentState PersistentState { get; protected set; }
+
+        public virtual void LoadCompleted()
+        {
+            PersistentState = PersistentState.Loaded;
+        }
+
+        public virtual Entity GetParent()
+        {
+            return null;
+        }
+
+        #endregion
 
         #region Notification
 
@@ -149,16 +173,5 @@ namespace Common.Persistent
         #endregion
     }
 
-    public interface IEntityAccesser
-    {
-        void Load<T>(T obj) where T : Entity;
-        void Insert<T>(T obj) where T : Entity;
-        void Update<T>(T obj) where T : Entity;
-        void Delete<T>(T obj) where T : Entity;
-        List<T> Search<T>(string condition = "", string order = "", int start = -1, int count = -1) where T : Entity, new();
-        List<TEntity> Search<TOwner, TEntity>(TOwner owner, Expression<Func<TOwner, IEnumerable>> exp, string order = "") where TEntity : Entity, new();
-        int GetCount<T>(string condition = "") where T : Entity;
-        int GetMax<T>(string name) where T : Entity;
-        
-    }
+    
 }

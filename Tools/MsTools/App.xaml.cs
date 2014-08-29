@@ -13,5 +13,6 @@ namespace MsTools
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

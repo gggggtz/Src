@@ -35,7 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
@@ -53,40 +60,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PersistentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestModel\DataType.cs" />
-    <Compile Include="TestModel\Enums.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\Index.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\IndexedFeature.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\KeyRelationship.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\KeyRelationshipFeature.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\UniqueKey.cs" />
-    <Compile Include="TestModel\Foundation\KeysIndexes\UniqueKeyFeature.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Classifier.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Database.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Dependency.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Element.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Expression.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\Feature.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\ModelElement.cs" />
-    <Compile Include="TestModel\ObjectModel\Core\NameSpace.cs" />
-    <Compile Include="TestModel\Persistent\Persistent.cs" />
-    <Compile Include="TestModel\Relational\Column.cs" />
-    <Compile Include="TestModel\Relational\Schema.cs" />
-    <Compile Include="TestModel\Relational\Table.cs" />
-    <Compile Include="TestModel\TableTypes.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="TestModel\Persistent\Create.sql" />
-    <EmbeddedResource Include="TestModel\Persistent\ForeignKey.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common.Persistent\Common.Persistent.csproj">
-      <Project>{1f43b235-452a-4437-867c-4d59eadd510b}</Project>
-      <Name>Common.Persistent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Common.Wcf\Common.Wcf.csproj">
       <Project>{290ab714-f9c2-40c6-8a35-7e22db340949}</Project>
       <Name>Common.Wcf</Name>
@@ -111,6 +88,10 @@
       <Project>{4b146253-0394-457a-b512-2a6869581c7f}</Project>
       <Name>Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8cb9b823-10c5-4fc5-a589-993852a9566d}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resource\Resource.csproj">
       <Project>{14a9df49-b40d-4140-9e44-683cd5e4d113}</Project>
       <Name>Resource</Name>
@@ -124,7 +105,7 @@
     <None Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="CommandGenerate.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

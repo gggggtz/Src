@@ -1,4 +1,7 @@
-﻿using Common.Wpf.Validation;
+﻿/// <copyright>
+/// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
+/// </copyright>
+using Common.Wpf.Validation;
 /// <copyright>
 /// Copyright © Microsoft Corporation 2014. All rights reserved. Microsoft CONFIDENTIAL
 /// </copyright>

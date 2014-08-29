@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationViewModel.cs" />
     <Compile Include="CodeGen\EnvDTE.cs" />
     <Compile Include="CodeGen\EnvDTE1.cs">
       <AutoGen>True</AutoGen>
@@ -65,10 +73,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Util.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\SolutionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="CodeGen\EnvDTE.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EnvDTE1.cs</LastGenOutput>
@@ -87,6 +98,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Util1.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CodeGen\SnippetToAttribute.xslt" />
@@ -107,6 +119,10 @@
     <ProjectReference Include="..\EGen_v1.13.0\prj\VS2010\EGenManagedProxy\EGenManagedProxy.vcxproj">
       <Project>{c5c925e7-ea36-470a-9dc8-69574f56946b}</Project>
       <Name>EGenManagedProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8cb9b823-10c5-4fc5-a589-993852a9566d}</Project>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resource\Resource.csproj">
       <Project>{14a9df49-b40d-4140-9e44-683cd5e4d113}</Project>

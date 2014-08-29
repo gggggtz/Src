@@ -61,6 +61,15 @@ namespace Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arguments must contain {0}..
+        /// </summary>
+        public static string InvalidArguments {
+            get {
+                return ResourceManager.GetString("InvalidArguments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password requires Capital character .
         /// </summary>
         public static string PasswordRequireCapital {
