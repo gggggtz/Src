@@ -33,8 +33,8 @@ namespace WebRole.MsTools.AzureCloudService.Controllers
             ViewBag.Message = string.Empty;
             try
             {
-                var container = CloudUtility.GetAzureBlobContainer("TestContainer");
-                var queue = CloudUtility.GetAzureQueue("TestQueue");
+                var container = CloudUtility.GetAzureBlobContainer("testcontainer");
+                var queue = CloudUtility.GetAzureQueue("testqueue");
                 ViewBag.Message = container.Name + ":" + container.Uri + " -- " + queue.Name + ":" + queue.Uri;
             }
             catch (Exception ex)
