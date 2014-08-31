@@ -84,6 +84,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RebootMachine", "RebootMach
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Reboot", "Reboot\Reboot.vcxproj", "{8EE9523B-1AA6-4F22-BBFE-5AD229708349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpTools", "XpTools\XpTools.csproj", "{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -348,10 +350,18 @@ Global
 		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Debug|x64.Build.0 = Debug|x64
 		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Debug|x86.ActiveCfg = Debug|Win32
 		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Debug|x86.Build.0 = Debug|Win32
-		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x64.ActiveCfg = Release|Win32
-		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x64.Build.0 = Release|Win32
+		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x64.ActiveCfg = Release|x64
+		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x64.Build.0 = Release|x64
 		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x86.ActiveCfg = Release|Win32
 		{8EE9523B-1AA6-4F22-BBFE-5AD229708349}.Release|x86.Build.0 = Release|Win32
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Debug|x64.Build.0 = Debug|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Debug|x86.Build.0 = Debug|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Release|x64.ActiveCfg = Release|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Release|x64.Build.0 = Release|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Release|x86.ActiveCfg = Release|Any CPU
+		{5B5EE986-B6A8-4D82-8C46-F4DF6428C7B8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

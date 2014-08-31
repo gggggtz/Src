@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int _tmain(int argc, _TCHAR* argv[])
+void Reboot(UINT flags)
 {
 	try
 	{
@@ -23,14 +23,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
 		{
 			cout << "OpenProcessToken Error : " << GetLastError() << endl;
-			return 0;
+			return ;
 		}
 
 		//Get the LUID (local unique identifier) 
 		if (!LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &stTokenPrivilege.Privileges[0].Luid))
 		{
 			cout << "LookupPrivilegeValue Error : " << GetLastError() << endl;
-			return 0;
+			return ;
 		}
 
 		stTokenPrivilege.PrivilegeCount = 1;
@@ -39,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (!AdjustTokenPrivileges(hToken, FALSE, &stTokenPrivilege, 0, NULL, NULL))
 		{
 			cout << "AdjustTokenPrivileges Error : " << GetLastError() << endl;
-			return 0;
+			return ;
 		}
 
 		if (hToken != NULL)
@@ -47,7 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			CloseHandle(hToken);
 		}
 
-		BOOL result = ExitWindowsEx(EWX_REBOOT,0);
+		BOOL result = ExitWindowsEx(flags, 0);
 		cout << result << endl;
 
 		if (result == 0)
@@ -63,7 +63,38 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		cout << ex.what() << endl;
 	}
+}
 
+void Usage()
+{
+	cout << "Reboot -r -f(optional) : " << endl;
+	cout << "-f : force reboot " << endl;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	wchar_t* r = L"-r";
+	wchar_t* f = L"-f";
+	if (argc >= 2)
+	{
+		if(*argv[1] == *r)
+		{
+			UINT flags = EWX_REBOOT;
+			if (argc == 3 && *argv[2] == *f)
+			{
+				flags |= EWX_FORCE;
+			}
+			Reboot(flags);
+		}
+		else
+		{
+			Usage();
+		}
+	}
+	else
+	{
+		Usage();
+	}
 	return 0;
 }
 
