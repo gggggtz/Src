@@ -199,27 +199,27 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Cloud\Common.Cloud.csproj">
+    <ProjectReference Include="..\..\Common.Cloud\Common.Cloud.csproj">
       <Project>{13437ad1-d5c8-47fc-a68a-71bccf2a7a86}</Project>
       <Name>Common.Cloud</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{4f1e6d13-715a-4655-9cf7-3f180915c0e3}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logging\Logging.csproj">
+    <ProjectReference Include="..\..\Logging\Logging.csproj">
       <Project>{4b146253-0394-457a-b512-2a6869581c7f}</Project>
       <Name>Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\..\Model\Model.csproj">
       <Project>{8cb9b823-10c5-4fc5-a589-993852a9566d}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Persistent\Persistent.csproj">
+    <ProjectReference Include="..\..\Persistent\Persistent.csproj">
       <Project>{22efb48b-f29a-4772-9259-f79e93956df8}</Project>
       <Name>Persistent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Resource\Resource.csproj">
+    <ProjectReference Include="..\..\Resource\Resource.csproj">
       <Project>{14a9df49-b40d-4140-9e44-683cd5e4d113}</Project>
       <Name>Resource</Name>
     </ProjectReference>
