@@ -210,25 +210,41 @@
     </ProjectReference>
     <ProjectReference Include="EGenDriverMEELib.vcxproj">
       <Project>{69127aa7-cac6-442d-981d-72dbe717a93a}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="EGenFlatFileLoad.vcxproj">
       <Project>{5a107ccc-9195-4c93-ad04-e30b6c88d356}</Project>
     </ProjectReference>
     <ProjectReference Include="EGenGenerateAndLoad.vcxproj">
       <Project>{09a6e7dc-802a-4a95-833b-12d0ba0ca977}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="EGenLogger.vcxproj">
       <Project>{fe6e4805-e3c0-47b6-b7fb-d1dcd1fab24e}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="EGenMSSQLLoader.vcxproj">
       <Project>{0ec75fef-16b5-4db5-ad4f-a41f6927cefc}</Project>
     </ProjectReference>
     <ProjectReference Include="EGenTables.vcxproj">
       <Project>{36f8142b-6234-497f-97da-d1218f5270c6}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
